@@ -87,7 +87,7 @@ workflows:
   version: 2
   test:
     jobs:
-      - build
+      - build:
       - build_image:
         requires:
           -build
