@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateCompanyClubs < ActiveRecord::Migration[5.2]
   def change
     create_table :company_clubs do |t|
