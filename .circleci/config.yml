@@ -28,13 +28,8 @@ jobs:
             - v1-dependencies-
 
       - run:
-          name: setup bundler and install dependencies
+          name: install dependencies
           command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
-            sudo gem install bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
@@ -67,3 +62,35 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+  build_image:
+    docker:
+      - image: docker:18.09.0
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: install aws cli
+          command: |
+            apk add --no-cache --update py-pip
+            pip install awscli
+      - run:
+          name: build image
+          command: |
+            $(aws ecr get-login --no-include-email --region ap-northeast-1)
+            docker build -t ${ECR_DOMAIN}/sample-image:$CIRCLE_SHA1 -t ${ECR_DOMAIN}/sample-image:latest --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production .
+      - run:
+          name: Push docker image
+          command: |
+            docker push ${ECR_DOMAIN}/sample-image:$CIRCLE_SHA1
+            docker push ${ECR_DOMAIN}/sample-image:latest
+workflows:
+  version: 2
+  test:
+    jobs:
+      -build
+      -build_images:
+        requires:
+          -build
+        filters:
+          branches:
+            only: master
