@@ -28,16 +28,13 @@ jobs:
             - v1-dependencies-
 
       - run:
-          name: setup bundler
+          name: setup bundler and install dependencies
           command: |
             sudo gem update --system
             sudo gem uninstall bundler
             sudo rm /usr/local/bin/bundle
             sudo rm /usr/local/bin/bundler
             sudo gem install bundler
-
-          name: install dependencies
-          command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
