@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: "users/sessions",
+    sessions: 'users/sessions'
   }
-  root  'users#index'
+  root 'users#index'
 
   resources :users do
     member do
@@ -15,5 +17,5 @@ Rails.application.routes.draw do
       patch 'type'
     end
   end
-  resources :relations, only: [:create, :destroy] 
+  resources :relations, only: %i[create destroy]
 end
