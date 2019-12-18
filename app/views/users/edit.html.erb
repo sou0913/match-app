@@ -1,22 +1,19 @@
 <div class="user-edit-form">
   <div class="user-edit-form__wrapper">
-    <%= form_with model: current_user do |f|%>
-
+    <%= form_with model: current_user, local: true do |f|%>
     <div class="row">
-      <% unless current_user.email == "test@example.com"%>
-        <div class="row edit-name-email-wrapper">
-          <div class="input-field col s6 edit-name-email-field">
-            <i class="material-icons prefix">account_circle</i>
-            <%=f.text_field :name, id: "icon_prefix", class: "validate", value: current_user.name %>
-            <label for="icon_prefix">お名前</label>
-          </div>
-          <div class="input-field col s6 edit-name-email-field">
-            <i class="material-icons prefix">email</i>
-            <%=f.email_field :email, id:"icon_telephone", class: "validate", value: current_user.email %>
-            <label for="icon_telephone">メールアドレス</label>
-          </div>
+      <div class="row edit-name-email-wrapper">
+        <div class="input-field col s6 edit-name-email-field">
+          <i class="material-icons prefix">account_circle</i>
+          <%=f.text_field :name, id: "icon_prefix", class: "validate", value: current_user.name %>
+          <label for="icon_prefix">お名前</label>
         </div>
-      <%end%>
+        <div class="input-field col s6 edit-name-email-field">
+          <i class="material-icons prefix">email</i>
+          <%=f.email_field :email, id:"icon_telephone", class: "validate", value: current_user.email %>
+          <label for="icon_telephone">メールアドレス</label>
+        </div>
+      </div>    
     </div>
 
     <div class="row">

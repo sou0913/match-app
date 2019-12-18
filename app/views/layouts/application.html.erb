@@ -27,6 +27,9 @@
 </head>
 
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+	<div class="flash">
+		<%= flash[:notice] %>
+	</div>
 	<div class="next-body">
 		<% if user_signed_in? %>
 		<div class="navbar-fixed">
