@@ -8,7 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.5.1-node-browsers
-
+        environment:
+          BUNDLER_VERSION: 2.0.2
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -27,6 +28,14 @@ jobs:
             - v1-dependencies-
 
       - run:
+          name: setup bundler
+          command: |
+            sudo gem update --system
+            sudo gem uninstall bundler
+            sudo rm /usr/local/bin/bundle
+            sudo rm /usr/local/bin/bundler
+            sudo gem install bundler
+
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
