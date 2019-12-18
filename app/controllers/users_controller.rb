@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
   before_action :set_relation, only: %i[index show favored result]
+  before_action :forbid_test_user, only: :update
   skip_before_action :check_attributes, only: :type
 
   def first
@@ -83,5 +84,12 @@ class UsersController < ApplicationController
     provision = params.require(:user).permit(:role)
     provision[:role] = provision[:role].to_i
     provision
+  end
+  
+  def forbid_test_user
+    if current_user.email == "test@example.com"
+      flash[:notice] = "テストユーザーのため変更できません"
+      redirect_to "/users"
+    end
   end
 end

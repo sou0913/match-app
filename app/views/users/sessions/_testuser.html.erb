@@ -1,0 +1,13 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+    <%= f.hidden_field :email, value: "test@example.com" %>
+    </div>
+
+    <div class="field">
+    <%= f.hidden_field :password, value: "testtest" %>
+    </div>
+
+    <div class="actions">
+    <%= f.submit "テストユーザーでログイン", class:"pink darken-1 btn waves-effect waves-light authentication-btn" %>
+    </div>
+<% end %>
