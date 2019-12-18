@@ -1,0 +1,146 @@
+html,body {
+  width: 100%;
+  height: 100%;
+  }
+
+  // フッターを固定し、かつコンテンツの広がりに合わせる
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.next-body {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.after-next-body {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+      
+.center-wrapper {
+  padding: 40px 50px;
+}
+.card-image-me {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.card-image-me::before {
+  content: "";
+  display: block;
+  padding-top: 65%;
+}
+
+.card-image-content {
+  position: absolute!important;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.main-header__user-name {
+  padding: 0 30px;
+}
+
+.side-nav__user-name {
+  padding: 0 30px;
+}
+
+@media screen and (min-width:601px) {
+  .center-wrapper {
+    padding: 30px 50px;
+  }
+  .user-block {
+    width: 49%;
+    box-sizing: border-box;
+    display: inline-block;
+  }
+  .user-block-content {
+    width: 100%!important;
+    box-sizing: inherit;
+  }
+} 
+@media screen and (min-width:1000px) {
+  .brand-logo {
+    margin-left: 20px;
+  }
+  .side-nav-self {
+    display: block;
+    height: 100vh;
+    width: 80px;
+  }
+  .center-wrapper {
+    padding: 60px 180px;
+  }
+  .user-block {
+    width: 44%;
+    box-sizing: border-box;
+    display: inline-block;
+   
+  }
+  .user-block-content {
+    width: 100%!important;
+    box-sizing: inherit;
+  }
+}  
+
+.pagination{
+  margin: 20px 0;
+  text-align: center;
+}
+
+.card-partner-name {
+  padding: 5px;
+}
+
+.icon-btn {
+  display: none;
+}
+.session-btn {
+  display: inline-block;
+}
+
+.favorite-btn {
+ float: right;
+ &:hover {
+   font-size: 15px;
+   .material-icons {
+     font-size: 20px;
+   }
+ }
+}
+
+.card-content-me {
+  padding: 40px 10px 5px 10px;
+}
+.opacity-cancel{
+  opacity: 1!important;
+}
+
+.waves-input-wrapper {
+  padding: 0 0!important;
+}
+.waves-button-input {
+  width: 120px;
+  height: 100%;
+}
+.authentication {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.authentication-wrapper {
+  width: 60%;
+  height: 70vh;
+}
+.authentication-btn {
+  margin: 5px;
+}
+
+

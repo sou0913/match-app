@@ -1,0 +1,16 @@
+<div class="row user-block">
+  <div class="col s12 m6 user-block-content">
+    <%=link_to user_path(partner), class: "user-block-link" do%>
+      <div class="card">
+        <div class="card-image card-image-me">
+          <%= image_tag select_image(partner), class: "card-image-content" %>
+        </div>
+          <div class="card-title card-partner-name"><%= partner.name %></div>
+          <%= render partial: "button", locals: button_data(current_user, partner, relation)%>
+        <div class= "card-content-me">
+          <p><%= select_profile(partner) %></p>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

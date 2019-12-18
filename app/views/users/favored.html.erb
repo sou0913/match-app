@@ -1,0 +1,8 @@
+<% if @favored.present?%>
+  <% @favored.each do |partner| %>
+    <%= render partial: 'user', locals: {partner: partner, relation: @relation} %>
+  <% end %>
+  <%= paginate @favored %>
+<% else%>
+  <p>まだいいねはありません</p>
+<% end %>

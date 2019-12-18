@@ -1,0 +1,19 @@
+<% right = (@message.user_id == current_user.id) ? "message-self" : "" %>
+var html = `<div class="message-block <%=right%>" data-id=<%=@message.id%>>
+              <div class="message-top">
+                <div class="message-user-name">
+                  <%=@message.user.name%>
+                </div>
+                <div class="message-created-at">
+                  <%=@message.created_at.strftime("%Y-%m-%d %H:%M")%>
+                </div>
+              </div>
+              <div class="message-main-wrapper">
+                <div class="message-main">
+                  <%= @message.content%>
+                </div>
+              </div>
+            </div>`
+$("#message-space-main").append(html);
+$("#message-content").val("");
+$(".message-space-main").animate({ scrollTop: $(".message-space-main")[0].scrollHeight});

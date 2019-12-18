@@ -1,0 +1,4 @@
+$(".user-block").remove();
+<% @partners.each do |partner| %>
+$(".search-append-zone").append(`<%= render partial: 'user', locals: {partner: partner, relation: @relation} %>`)
+<% end %>

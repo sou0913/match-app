@@ -1,0 +1,24 @@
+<div class="message-space-main" id="message-space-main" data-user-id=<%=current_user.id%> data-partner-id=<%=@partner.id%>>
+  <%= render @messages %>
+</div>
+
+<div class="row message-send-tools">
+  <%= form_with model: [current_user,@message], class:"col s12 message-send-system" do |f| %>
+    <%= f.hidden_field :partner_id, value: @partner.id %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.label :cotent, "メッセージを入力してください"%>
+        <%=f.text_field :content, id:"textarea1", class:"materialize-textarea", id: "message-content", data:{length: "200"} %>
+      </div>
+    </div>
+    <label>
+      <%= f.submit class: "message-send-btn" %>
+      <button class="btn waves-effect waves-light message-send-js">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </label>
+  <% end %>
+</div>
+
+
+

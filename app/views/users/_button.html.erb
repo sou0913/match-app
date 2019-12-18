@@ -1,0 +1,23 @@
+<%if type == 4%>
+  <div class="button-wrapper">
+    <%= link_to edit_user_path(current_user), class: "btn #{color} waves-effect waves-light favorite-btn" do %>
+      <i class="material-icons right"><%= mark %></i>
+      <span><%= text %></span>
+    <% end %>
+  </div>
+<% elsif type == 3%>
+   <div class="button-wrapper-<%= partner.id %>"> 
+    <%= link_to user_message_path(current_user, partner), class: "btn #{color} waves-effect waves-light favorite-btn favorite-btn-#{partner.id}" do %>
+      <span class="favorite-btn-text-<%=partner.id%>"><%= text %></span>
+    <% end %>
+  </div>
+<% else%>
+  <%= form_with model: relation do |f| %>
+    <div class="button-wrapper-<%=partner.id%>"> 
+        <%= button_tag type:'submit',name: "partner_id", value: partner.id, class: "btn #{color} waves-effect waves-light favorite-btn favorite-btn-#{partner.id}" do %> 
+          <i class="material-icons material-icons-<%=partner.id%> right"><%= mark %></i>
+          <span class="favorite-btn-text-<%=partner.id%>"><%= text %></span>
+        <% end %>  
+    </div>
+  <% end %>
+<% end %>  

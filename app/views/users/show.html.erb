@@ -1,0 +1,41 @@
+<div class="users__show">
+  <div class="users__show-left">
+
+    <div class="users__show-left__image">
+      <div class="card-image card-image-me">
+        <%= image_tag select_image(@partner), class: "card-image-content" %>
+      </div>
+    </div>
+
+    <div class="users__show-left__text">  
+      <p>
+        <%= @partner.name %>
+      </p>
+      <p>
+        所在地：
+        <%= I18n.t "enums.user.address.#{@partner.address}"%>
+      </p>
+      <p>
+        ジャンル： 
+        <%= I18n.t "enums.user.genre.#{@partner.genre}"%>
+      </p>
+      <p>
+        人数：
+        <%= I18n.t "enums.user.people.#{@partner.people}"%>
+      </p>
+    </div>
+    <div class="users__show-left__button">
+      <%= render partial: "button", locals: button_data(current_user, @partner, @relation)%>
+    </div>
+
+  </div>
+
+  <div class="users__show-right">
+      <p>
+        プロフィール：
+      </p>
+      <p>
+        <%=select_profile(@partner)%>
+      </p>
+  </div>
+</div>

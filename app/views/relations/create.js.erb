@@ -1,0 +1,12 @@
+<% case @button[:type] %>
+<% when 1 %>
+$(".favorite-btn-<%=@partner_id%>").toggleClass("green pink");
+<% when 3 %>
+$(".favorite-btn-<%=@partner_id%>").toggleClass("blue red");
+$('.match-popup').delay(1500).fadeIn(1000);
+$('.match-popup-message-wrapper').append(`<%=link_to "メッセージを送る", user_message_path(current_user, @partner) %> <%=link_to "トップ画面に戻る", users_path %>`)
+<% end %>
+$(".favorite-btn-text-<%=@partner_id%>").text("<%=@button[:text]%>");
+$(".material-icons-<%=@partner_id%>").text("<%=@button[:mark]%>");
+$(".favorite-btn-<%=@partner_id%>").hide().fadeIn(5000);
+$

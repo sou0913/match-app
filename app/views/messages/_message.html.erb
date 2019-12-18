@@ -1,0 +1,15 @@
+<div class="message-block" data-user-id=<%=message.user.id%> data-id=<%=message.id%>>
+  <div class="message-top">
+    <div class="message-user-name">
+      <%= message.user.name%>
+    </div>
+    <div class="message-created-at">
+      <%= message.created_at.strftime("%Y-%m-%d %H:%M")%>
+    </div>
+  </div>
+  <div class="message-main-wrapper">
+    <div class="message-main">
+      <%= message.content%>
+    </div>
+  </div>
+</div>

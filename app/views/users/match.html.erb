@@ -1,0 +1,6 @@
+<% if @users.present?%>
+  <%= render @users %>
+  <%= paginate @users %>
+<% else %>
+  <p>まずはいいねを送ってみよう！</p>
+<% end %>

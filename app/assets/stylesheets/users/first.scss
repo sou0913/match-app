@@ -1,0 +1,32 @@
+.first-radio-form-wrapper {
+  height: calc(100vh - 30px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.first-radio-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.first-communication-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & h3 {
+    font-size: 50px;
+    padding: 40px;
+  }
+}
+.first-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.radio-button-wrapper {
+  display: flex;
+  & p {
+    padding: 20px;
+  }
+}

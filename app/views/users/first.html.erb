@@ -1,0 +1,22 @@
+<div class="first-radio-form-wrapper">
+  <div class="first-radio-form">
+    <div class="first-communication-box">
+      <h3>ご登録ありがとうございます</h3>
+      <p>お客様の希望されるご利用方法をお選びください</p>
+    </div>
+    <%=form_with model: current_user, local: true, url: type_user_path(current_user), class: "first-form" do |f| %>
+      <div class="radio-button-wrapper">
+        <p>
+          <%= f.radio_button :role, 0, id:"test1" %>
+          <label for="test1">企業</label>
+        </p>
+
+        <p>
+          <%= f.radio_button :role, 1, id:"test2" %>
+          <label for="test2">団体</label>
+        </p>
+      </div> 
+      <%=f.submit "決定する", class:"waves-effect waves-light btn-large" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class = "center-wrapper">
+
+<% @partners.each do |partner| %>
+  <%= render partial: 'user', locals: {partner: partner, relation: @relation}%>
+<% end %>
+<%= paginate @partners, class: "paginate-self" %>
+</div>  
+
+
+
+

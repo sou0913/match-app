@@ -1,0 +1,32 @@
+.message-space-main{
+  width: 100%;
+  flex: 1 0 auto;
+  max-height: 40vh;
+  overflow: scroll;
+}
+.message-send-tools {
+
+  width: 100%;
+}
+.message-send-btn {
+  display: none;
+}
+.message-block {
+  border: solid 1px;
+  border-radius: 5px;
+  width: 30%;
+  padding: 5px;
+  margin: 15px;
+  background: #009688 ;
+  color: white;
+}
+.message-user-name {
+  display: inline-block;
+ }
+ .message-created-at {
+   display: inline-block;
+ }
+ .message-self {
+  margin: 15px 15px 15px auto;
+ }
+
