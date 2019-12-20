@@ -21,7 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # localhostだと通らない。docker-cpmposeのサービス名を入れる
-  host: <%= ENV.fetch("PGHOST") { postgres } %>
+  host: <%= ENV.fetch("PGHOST") { 'postgres' } %>
   port: 5432
   username: postgres
   password: 
@@ -62,7 +62,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: match-app_test
+  database: <%= ENV.fetch("POSTGRES_DB") { 'match-app_test' } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { 'postgres' } %>
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
