@@ -10,9 +10,9 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
           RAILS_ENV: test
+          RACK_ENV: test
           PGHOST: localhost
-          POSTGRES_USER: root
-          POSTGRES_DB: circle-test_test
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -43,7 +43,7 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
-
+      - run: 
       # run tests!
       - run:
           name: run tests
