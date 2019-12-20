@@ -7,7 +7,7 @@ services:
       - 3000:3000
     volumes:
       - ./:/app/
-  postgresql:
+  postgres:
     image: postgres:10.5
     environment:
       IMPORT_FROM_DIR: /data

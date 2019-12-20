@@ -21,7 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   # localhostだと通らない。docker-cpmposeのサービス名を入れる
-  host: postgresql
+  host: postgres
   port: 5432
   username: postgres
   password: 
