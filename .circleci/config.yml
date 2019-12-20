@@ -83,7 +83,7 @@ jobs:
           name: nginx image
           command: |
             NGINX_TAG=$(echo ${CIRCLE_SHA1} | cut -c 7-12)
-            docker build /nginx/
+            docker build nginx/
             docker push ${ECR_DOMAIN}:${NGINX_TAG}
 workflows:
   version: 2
