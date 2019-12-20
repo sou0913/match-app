@@ -20,6 +20,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch('DATABASE_HOST') {'localhost'} %>
+  port: <%= ENV.fetch('DATABASE_PORT') {'5432'} %>
+  username: <%= ENV.fetch('DATABASE_USER') {'root'} %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') {'root'} %>
 
 development:
   <<: *default
@@ -80,6 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: match-app_production
-  username: match-app
-  password: <%= ENV['MATCH-APP_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.db[:host] %>
+  database: <%= Rails.application.credentials.db[:name] %>
+  username: <%= Rails.application.credentials.db[:user] %>
+  password: <%= Rails.application.credentials.db[:password] %>
