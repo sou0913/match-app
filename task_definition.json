@@ -1,5 +1,5 @@
 {
-  "containerDefinitions": [
+  "contanerDefinitions": [
     {
       "name": "sample-rails",
       "image": "486463126616.dkr.ecr.ap-northeast-1.amazonaws.com/sample-image:latest",
