@@ -1,0 +1,31 @@
+version: '3'
+services:
+  unicorn-server:
+    build: ./
+    env_file: .docker-env
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app/
+  postgresql:
+    image: postgres:10.5
+    environment:
+      IMPORT_FROM_DIR: /data
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres/sh:/docker-entrypoint-initdb.d
+      - ./postgres/data:/data
+      - ./postgres/storage:/var/lib/postgresql/data
+  nginx-server:
+    build: ./nginx
+    ports:
+      - 80:8080
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./sockets/:/app/sockets/
+volumes:
+  mysql-data:
+    driver: local
