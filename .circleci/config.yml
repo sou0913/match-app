@@ -77,14 +77,14 @@ jobs:
           name: unicorn image
           command: |
             UNICORN_TAG=$(echo ${CIRCLE_SHA1} | cut -c 1-6)
-            docker build -t ${ECR_DOMAIN}:${UNICORN_TAG}  --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production .
+            docker build -t ${ECR_DOMAIN}:${UNICORN_TAG} -t ${ECR_DOMAIN}:nginx-latest --build-arg RAILS_MASTER_KEY=${RAILS_MASTER_KEY} --build-arg RAILS_ENV=production .
             docker push ${ECR_DOMAIN}:${UNICORN_TAG}
             docker push ${ECR_DOMAIN}:unicorn-latest
       - run:
           name: nginx image
           command: |
             NGINX_TAG=$(echo ${CIRCLE_SHA1} | cut -c 7-12)
-            docker build -t ${ECR_DOMAIN}:${NGINX_TAG} nginx/
+            docker build -t ${ECR_DOMAIN}:${NGINX_TAG} -t ${ECR_DOMAIN}:nginx-latest nginx/
             docker push ${ECR_DOMAIN}:${NGINX_TAG}
             docker push ${ECR_DOMAIN}:nginx-latest
 workflows:
