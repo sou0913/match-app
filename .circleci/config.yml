@@ -87,6 +87,26 @@ jobs:
             docker build -t ${ECR_DOMAIN}:${NGINX_TAG} -t ${ECR_DOMAIN}:nginx-latest nginx/
             docker push ${ECR_DOMAIN}:${NGINX_TAG}
             docker push ${ECR_DOMAIN}:nginx-latest
+  deploy:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - run:
+          name: install aws cli
+          command: |
+            sudo pip install awscli
+      - run:
+        name: download jq
+        command: |
+          wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
+          mv jq-linux64 jq
+      - run:
+        name: login
+        command: |
+          $(aws ecr get-login --no-include-email --region ap-northeast-1)
+      - run:
+        name: deploy
+        
 workflows:
   version: 2
   test:
