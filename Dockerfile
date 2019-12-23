@@ -20,7 +20,7 @@ RUN apt-get install nodejs
 
 ADD . $APP_ROOT
 
-RUN if ["${RAILS_ENV}" = "production" ]; then bundle exec rails assets precompile; else export RAILS_ENV=development; fi
+RUN if ["${RAILS_ENV}" = "production"]; then bundle exec rails assets precompile; else export RAILS_ENV=development; fi
 
 EXPOSE 3000
 CMD ["unicorn", "-c", "config/unicorn.rb"]
