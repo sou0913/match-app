@@ -9,7 +9,13 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+
+/tmp/cache
+/tmp/sockets/
+/tmp/storage
+tmp/development_secret.txt
+tmp/restart.txt
+
 !/log/.keep
 !/tmp/.keep
 
@@ -27,4 +33,4 @@ public/uploads/*
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .docker-env
-postgres
+postgres/
