@@ -106,7 +106,14 @@ jobs:
           $(aws ecr get-login --no-include-email --region ap-northeast-1)
       - run:
         name: deploy
-        
+        command: |
+          aws ecs describe-task-definition --task-definition rails-service | jq '.taskDefinition | {containerDefinitions: .containerDefinitions}' > definition.json
+          aws ecs register-task-definition --execution-role-arn arn:aws:iam::486463126616:role/ecs_task_role --family rails-service --cli-input-json file://definition.json
+          aws ecs update-service --cluster sample-ecs-cluster --service rails-service --task-definition rails-service
+      - run:
+        name: migration
+        command: |
+          aws ecs run-task --cluster sample-ecs-cluster --task-definition rails-migrate
 workflows:
   version: 2
   test:
