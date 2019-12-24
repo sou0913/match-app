@@ -113,7 +113,8 @@ jobs:
       - run:
           name: migration
           command: |
-            aws ecs run-task --cluster sample-ecs-cluster --task-definition rails-migrate
+            aws ecs run-task --cluster sample-ecs-cluster --task-definition rails-migration
+
 workflows:
   version: 2
   test:
@@ -128,6 +129,6 @@ workflows:
       - deploy:
           requires:
             - build_image
-          fileters:
+          filters:
             branches:
               only: master
