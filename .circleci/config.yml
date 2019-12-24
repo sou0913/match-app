@@ -125,3 +125,9 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy:
+          requires:
+            - build_image
+          fileters:
+            branches:
+              only: master
