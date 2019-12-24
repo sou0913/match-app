@@ -1,41 +1,30 @@
-<div class="users__show">
-  <div class="users__show-left">
-
-    <div class="users__show-left__image">
-      <div class="card-image card-image-me">
-        <%= image_tag select_image(@partner), class: "card-image-content" %>
-      </div>
+<div class="row">
+  <div class="col s12 m4 l3">
+    <div class="card-image card-image-me">
+      <%= image_tag select_image(@partner), class:"responsive-img" %>
     </div>
-
-    <div class="users__show-left__text">  
-      <p>
+    <ul class="collection">
+      <li class="collection-item">
         <%= @partner.name %>
-      </p>
-      <p>
-        所在地：
+      </li>
+      <li class="collection-item">所在地：
         <%= I18n.t "enums.user.address.#{@partner.address}"%>
-      </p>
-      <p>
-        ジャンル： 
+      </li>
+      <li class="collection-item">ジャンル：
         <%= I18n.t "enums.user.genre.#{@partner.genre}"%>
-      </p>
-      <p>
-        人数：
+      </li>
+      <li class="collection-item">人数：
         <%= I18n.t "enums.user.people.#{@partner.people}"%>
-      </p>
-    </div>
-    <div class="users__show-left__button">
-      <%= render partial: "button", locals: button_data(current_user, @partner, @relation)%>
-    </div>
-
+      </li>
+    </ul>
+    <%= render partial: "button", locals: button_data(current_user, @partner, @relation)%>
   </div>
-
-  <div class="users__show-right">
-      <p>
-        プロフィール：
-      </p>
+  <div class="col s12 m8 l9">
+    <div class="container">
+      <p> プロフィール： </p>
       <p>
         <%=select_profile(@partner)%>
       </p>
+    </div>
   </div>
 </div>

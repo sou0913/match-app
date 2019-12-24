@@ -1,6 +1,7 @@
-<div class="user-edit-form">
-  <div class="user-edit-form__wrapper">
-    <%= form_with model: current_user, local: true do |f|%>
+<%# <div class="user-edit-form">
+  <div class="user-edit-form__wrapper"> %>
+  <div class="row">
+    <%= form_with model: current_user, class:"col s12" do |f|%>
     <div class="row">
       <div class="row edit-name-email-wrapper">
         <div class="input-field col s6 edit-name-email-field">
@@ -16,16 +17,12 @@
       </div>    
     </div>
 
-    <div class="row">
-
         <div class="row">
           <div class="input-field col s12">
-            <%=f.text_field :profile, id:"textarea1", class:"materialize-textarea", value: current_user.profile%>
+            <%=f.text_area :profile, id:"textarea1", class:"materialize-textarea", value: current_user.profile %>
             <label for="textarea1">プロフィール</label>
           </div>
         </div>
-      
-    </div>
           
 
       <div class="file-field input-field">
@@ -58,9 +55,9 @@
       <%=f.submit "保存する", class:"waves-effect waves-light btn-large user-edit-submit-btn" %>
     </div>
     <% end %>
-  </div>
+  <%# </div>
+</div> %>
 </div>
-
 <div class="popup">
     <div class="popup-content">
       <p>保存しました</p>

@@ -24,6 +24,7 @@ tmp/restart.txt
 !/storage/.keep
 public/uploads/*
 terraform/*/.terraform
+.DS_Store
 
 /node_modules
 /yarn-error.log
