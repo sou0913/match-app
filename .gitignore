@@ -23,6 +23,7 @@ tmp/restart.txt
 /storage/*
 !/storage/.keep
 public/uploads/*
+terraform/*/.terraform
 
 /node_modules
 /yarn-error.log
