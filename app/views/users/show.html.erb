@@ -8,13 +8,13 @@
         <%= @partner.name %>
       </li>
       <li class="collection-item">所在地：
-        <%= I18n.t "enums.user.address.#{@partner.address}"%>
+        <%= @partner.address %>
       </li>
       <li class="collection-item">ジャンル：
-        <%= I18n.t "enums.user.genre.#{@partner.genre}"%>
+        <%= @partner.genre %>
       </li>
       <li class="collection-item">人数：
-        <%= I18n.t "enums.user.people.#{@partner.people}"%>
+        <%= @partner.people %>
       </li>
     </ul>
     <%= render partial: "button", locals: button_data(current_user, @partner, @relation)%>

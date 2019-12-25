@@ -1,15 +1,13 @@
-
-
 <div class="row container">
   <div class="col s12 m4 l3">
     <%= render partial: 'search' %>
   </div>
-  <div class="col s12 m8 l9">
+  <div class="col s12 m8 l9 my_users">
       <% @partners.each do |partner| %>
         <%= render partial: 'user', locals: {partner: partner, relation: @relation} %>
       <% end %>
   </div>
-  <div class="col s12 center-align">
+  <div class="col s12 center-align my_pagenate">
     <%= paginate @partners %>
   </div>
 </div>
