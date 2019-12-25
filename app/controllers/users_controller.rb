@@ -3,10 +3,11 @@
 class UsersController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
-  before_action :set_relation, only: %i[index show favored result]
+  before_action :set_relation, only: %i[index show favored search]
   before_action :forbid_test_user, only: :update
   skip_before_action :check_attributes, only: :type
-
+  protect_from_forgery except: :search
+  
   def first
     redirect_to root_path if current_user.role.present?
     render :first, layout: 'noheader'
@@ -18,6 +19,8 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
+    @q = User.ransack(params[:q])
     @partners = if current_user.role == 1
                   User.includes(:relations).where(role: 0).page(params[:page]).per(10)
                 else
@@ -35,12 +38,10 @@ class UsersController < ApplicationController
     User.update(updateparams)
   end
 
-  def match
-    match_relations = current_user.relations.where(match: 1).page(params[:page]).per(10)
-    @users = []
-    match_relations.each do |match_relation|
-      @users.push(match_relation.company)
-    end
+  def search
+    @q = User.search(search_params)
+    @partners = @q.result(distinct: true).page(params[:page]).per(10)
+    render 'search.js.erb'
   end
 
   def favored
@@ -52,26 +53,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def result
-    address = params[:address] == 'noaddress' ? [*(0..47)] : params[:address]
-    genre = params[:genre] == 'nogenre' ? [*(0..3)] : params[:genre]
-    people = params[:people] == 'nopeople' ? [*(0..10)] : params[:people]
-    terms = { address: address, genre: genre, people: people }
-    @partners = if current_user.role == 1
-                  User.where(terms).where(role: 0).page(params[:page]).per(10)
-                else
-                  User.where(terms).where(role: 1).page(params[:page]).per(10)
-                end
-  end
-
   private
 
   def set_relation
     @relation = Relation.new
   end
 
-  def searchparams
-    params.permit(:address, :genre, :people)
+  def search_params
+    if current_user.role == 0
+      params.require(:q).permit(:address_eq, :genre_eq, :people_eq).merge(role_eq: 1)
+    else
+      params.require(:q).permit(:address_eq, :genre_eq, :people_eq).merge(role_eq: 0)
+    end
   end
 
   def updateparams

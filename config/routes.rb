@@ -16,9 +16,12 @@ Rails.application.routes.draw do
       get 'first'
       patch 'type'
     end
+    collection do
+      get 'search'
+    end
   end
   resources :relations, only: %i[create destroy]
   namespace :api do
-    resources :relations, only: :index
+    resources :relations, only: :index  
   end
 end

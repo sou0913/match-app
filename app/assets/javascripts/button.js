@@ -23,13 +23,12 @@ $(function() {
       url:'/api/relations',
       data:{id: id},
       dataType:'json',
-      success: function(data, dataType) {
-        console.log("success");
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        console.log("error");
-      }
+    })
+    .done(function(response) {
+      console.log("success");
+    })
+    .fail(function(xhr) {
+      console.log("error");
     })
   })
-
 })
