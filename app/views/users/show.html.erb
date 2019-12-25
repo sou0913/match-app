@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row container">
   <div class="col s12 m4 l3">
-    <div class="card-image card-image-me">
+    <div class="card-image section">
       <%= image_tag select_image(@partner), class:"responsive-img" %>
     </div>
     <ul class="collection">
@@ -20,7 +20,7 @@
     <%= render partial: "button", locals: button_data(current_user, @partner, @relation)%>
   </div>
   <div class="col s12 m8 l9">
-    <div class="container">
+    <div class="section">
       <p> プロフィール： </p>
       <p>
         <%=select_profile(@partner)%>

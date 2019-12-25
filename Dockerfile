@@ -23,4 +23,4 @@ ADD . $APP_ROOT
 RUN if ["${RAILS_ENV}" = "production"]; then bundle exec rails assets precompile; else export RAILS_ENV=development; fi
 
 EXPOSE 3000
-CMD ["unicorn", "-c", "config/unicorn.rb"]
+CMD if ["${RAILS_ENV}" = "production"]; then unicorn -c config/unicorn.rb; else rails server -b 0.0.0.0; fi

@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem "rspec_junit_formatter"
+  gem 'pry-rails'
 end
 
 group :development do
@@ -72,5 +73,4 @@ gem 'devise'
 gem 'enum_help'
 gem 'jquery-rails'
 gem 'kaminari'
-gem 'pry-rails'
 gem 'unicorn'

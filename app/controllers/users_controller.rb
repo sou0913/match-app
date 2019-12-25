@@ -19,9 +19,9 @@ class UsersController < ApplicationController
 
   def index
     @partners = if current_user.role == 1
-                  User.where(role: 0).page(params[:page]).per(10)
+                  User.includes(:relations).where(role: 0).page(params[:page]).per(10)
                 else
-                  User.where(role: 1).page(params[:page]).per(10)
+                  User.includes(:relations).where(role: 1).page(params[:page]).per(10)
                 end
   end
 
@@ -51,8 +51,6 @@ class UsersController < ApplicationController
       @favored = Kaminari.paginate_array(favored_ary).page(params[:page]).per(10)
     end
   end
-
-  def search; end
 
   def result
     address = params[:address] == 'noaddress' ? [*(0..47)] : params[:address]

@@ -1,11 +1,15 @@
-<div class = "center-wrapper">
-
-<% @partners.each do |partner| %>
-  <%= render partial: 'user', locals: {partner: partner, relation: @relation}%>
-<% end %>
-<%= paginate @partners, class: "paginate-self" %>
-</div>  
 
 
-
-
+<div class="row container">
+  <div class="col s12 m4 l3">
+    <%= render partial: 'search' %>
+  </div>
+  <div class="col s12 m8 l9">
+      <% @partners.each do |partner| %>
+        <%= render partial: 'user', locals: {partner: partner, relation: @relation} %>
+      <% end %>
+  </div>
+  <div class="col s12 center-align">
+    <%= paginate @partners %>
+  </div>
+</div>
