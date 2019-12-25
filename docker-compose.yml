@@ -6,8 +6,10 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - sockets_share:/app/sockets
+      # - sockets_share:/app/sockets
       - ./:/app/
+    tty: true
+    stdin_open: true
   postgres:
     image: postgres:10.5
     environment:
@@ -18,11 +20,12 @@ services:
       - ./postgres/sh:/docker-entrypoint-initdb.d
       - ./postgres/data:/data
       - ./postgres/storage:/var/lib/postgresql/data
-  nginx-server:
-    build: ./nginx
-    ports:
-      - 80:8080
-    volumes:
-      - sockets_share:/app/sockets
-volumes:
-  sockets_share:
+  # nginx-server:
+  #   build: ./nginx
+  #   ports:
+  #     - 80:8080
+  #   volumes:
+  #     - sockets_share:/app/sockets
+
+# volumes:
+#   sockets_share:

@@ -8,14 +8,17 @@ Rails.application.routes.draw do
   root 'users#index'
 
   resources :users do
+    resources :messages, only: %i[show create]
     member do
       get 'favored'
       get 'match'
-      get 'search'
       get 'result'
       get 'first'
       patch 'type'
     end
   end
   resources :relations, only: %i[create destroy]
+  namespace :api do
+    resources :relations, only: :index
+  end
 end

@@ -1,102 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MatchApp</title>
-	<%= csrf_meta_tags %>
-	<%= csp_meta_tag %>
-
-	<%= javascript_include_tag 'application' %>
-	
-
-	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.js"></script>
-	<%# reset-css %>
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-	
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<%= stylesheet_link_tag    'application', media: 'all' %>
-
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-
-</head>
-
+  <title>MatchApp</title>
+  <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+      <%= javascript_include_tag 'application' %>
+        <%# reset-css %>
+          <!-- Compiled and minified CSS -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+          <!-- Compiled and minified JavaScript -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <%= stylesheet_link_tag    'application', media: 'all' %>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
-	<div class="flash">
-		<%= flash[:notice] %>
-	</div>
-	<div class="next-body">
-		<% if user_signed_in? %>
-		<div class="navbar-fixed">
-			<nav>
-				<div class="nav-wrapper teal darken-1 main-header">
-					<a href="/" class="brand-logo">Between</a>
-					<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><p class="main-header__user-name"><%=current_user.name%>　様</p></li>
-						<li><%= link_to "検索する", search_user_path(current_user) %></li>
-						<li><%= link_to "トップページ", root_path %></li>
-						<li><%= link_to "マイページ", user_path(current_user) %></li>
-						<li><%= link_to "あなたへのいいね", favored_user_path(current_user) %></li>
-						<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-		<ul class="side-nav" id="mobile-demo">
-			<li><p class="side-nav__user-name"><%=current_user.name%>　様</p></li>
-			<li><%= link_to "検索する", search_user_path(current_user) %></li>
-			<li><%= link_to "トップページ", root_path %></li>
-			<li><%= link_to "マイページ", user_path(current_user) %></li>
-			<li><%= link_to "あなたへのいいね", favored_user_path(current_user) %></li>
-			<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-		</ul>
-		<% end %>
-		<div class="after-next-body">
-			<%= yield %>
-
-			<div class="match-popup">
-				<div class="match-popup-wrapper">
-					<div class="match-popup-content-wrapper">
-						<div class="match-popup-content">
-							<div class="match-popup-message-wrapper">
-								<p>マッチングしました!</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<footer class="page-footer teal darken-1">
-		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">株式会社 Between</h5>
-					<p class="grey-text text-lighten-4">For companies, for clubs.</p>
-				</div>
-				<div class="col l4 offset-l2 s12">
-					<h5 class="white-text"></h5>
-					<ul>
-						<li><p class="grey-text text-lighten-3" href="#!">FAQ</p></li>
-						<li><p class="grey-text text-lighten-3" href="#!">お問い合わせ</p></li>
-						<li><p class="grey-text text-lighten-3" href="#!">免責事項</p></li>
-						<li><p class="grey-text text-lighten-3" href="#!">プライバシーポリシー</p></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				© 2019 Between
-				<a class="grey-text text-lighten-4 right" href="#!"></a>
-			</div>
-		</div>
-		</footer>
-	</body>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="navbar-fixed">
+      <nav class="teal darken-1">
+        <div class="nav-wrapper container"> <a href="/" class="brand-logo">Between</a> <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <%= link_to "トップページ", root_path %>
+            </li>
+            <li>
+              <%= link_to "#{current_user.name}さんのマイページ", user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "あなたへのいいね", favored_user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <ul class="side-nav" id="mobile-demo">
+      <li>
+        <%= link_to "トップページ", root_path %>
+      </li>
+      <li>
+        <%= link_to "#{current_user.name}さんのマイページ", user_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "あなたへのいいね", favored_user_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+    <% end %>
+      <main>
+        <%= yield %>
+      </main>
+      <div class="match-popup">
+        <div class="match-popup-wrapper">
+          <div class="match-popup-content-wrapper">
+            <div class="match-popup-content">
+              <div class="match-popup-message-wrapper">
+                <p>マッチングしました!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <footer class="page-footer teal darken-1">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">株式会社 Between</h5>
+              <p class="grey-text text-lighten-4">For companies, for clubs.</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text"></h5>
+              <ul>
+                <li>
+                  <p class="grey-text text-lighten-3" href="#!">FAQ</p>
+                </li>
+                <li>
+                  <p class="grey-text text-lighten-3" href="#!">お問い合わせ</p>
+                </li>
+                <li>
+                  <p class="grey-text text-lighten-3" href="#!">免責事項</p>
+                </li>
+                <li>
+                  <p class="grey-text text-lighten-3" href="#!">プライバシーポリシー</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container"> © 2019 Between <a class="grey-text text-lighten-4 right" href="#!"></a> </div>
+        </div>
+      </footer>
+</body>
 </html>
