@@ -1,6 +1,8 @@
 $(function(){
-  var controller = $('body').data("controller");
-  var action = $('body').data("action");
+var controller = $('body').data("controller");
+var action = $('body').data("action");
+try {
+  if (controller != "messages" || action != "show" ){throw new Error(e)}
   var user_id = $("#message-space-main").data("userId");
   $(`.message-block[data-user-id=${user_id}]`).addClass("message-self");
   $('.message-space-main').animate({ scrollTop: $('.message-space-main')[0].scrollHeight}); 
@@ -58,8 +60,6 @@ $(function(){
   }
 
   // 定期的に新規メッセージを取得
-  try {
-    if (controller != "messages" || action != "show" ){throw new Error(e)}
     setInterval(reloadMessages, 5000);
   }catch(e){}
 })
