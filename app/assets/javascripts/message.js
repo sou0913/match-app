@@ -1,11 +1,10 @@
 $(function(){
   var controller = $('body').data("controller");
   var action = $('body').data("action");
-  try {
-    if (controller != "messages" || action != "show" ){throw new Error(e)}
-  $('.message-space-main').animate({ scrollTop: $('.message-space-main')[0].scrollHeight}); 
   var user_id = $("#message-space-main").data("userId");
   $(`.message-block[data-user-id=${user_id}]`).addClass("message-self");
+  $('.message-space-main').animate({ scrollTop: $('.message-space-main')[0].scrollHeight}); 
+  // メッセージのマークアップ
   function buildHTML(message) {
     var self = (user_id == message.user_id) ? "message-self" : "" ;
     html = `<div class="message-block ${self}" data-id=${message.id}>
@@ -25,6 +24,8 @@ $(function(){
           </div>`
     return html;
   }
+
+  // メッセージの自動更新
   function reloadMessages(){
     if ($(".message-block").length > 0){
       var id = $(".message-block").last().data("id");
@@ -55,6 +56,10 @@ $(function(){
       alert('error')
     })
   }
-  setInterval(reloadMessages, 5000);
-}catch(e){}
+
+  // 定期的に新規メッセージを取得
+  try {
+    if (controller != "messages" || action != "show" ){throw new Error(e)}
+    setInterval(reloadMessages, 5000);
+  }catch(e){}
 })

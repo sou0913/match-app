@@ -7,13 +7,13 @@
     <%= f.hidden_field :partner_id, value: @partner.id %>
     <div class="row">
       <div class="input-field col s12">
-        <%= f.label :cotent, "メッセージを入力してください"%>
-        <%=f.text_field :content, id:"textarea1", class:"materialize-textarea", id: "message-content", data:{length: "200"} %>
+        <%= f.label :cotent, "メッセージを入力します"%>
+        <%=f.text_area :content, id:"textarea1", class:"materialize-textarea", id: "message-content", data:{length: "200"} %>
       </div>
     </div>
     <label>
       <%= f.submit class: "message-send-btn" %>
-      <button class="btn waves-effect waves-light message-send-js">Submit
+      <button class="btn waves-effect waves-light message-send-js">送信
         <i class="material-icons right">send</i>
       </button>
     </label>

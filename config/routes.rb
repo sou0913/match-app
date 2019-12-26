@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :messages, only: %i[show create]
-    member do
+    namespace :api do
+      resources :messages, only: :index
+    end
+      member do
       get 'favored'
       get 'match'
       get 'result'
