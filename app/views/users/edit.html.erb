@@ -42,8 +42,8 @@
     </div>
 
     <div class="input-field col s12">
-      <%=f.select :genre, User.genres_i18n.keys.map{|k| [User.genres_i18n[k], k]}, {include_blank: true, selected: current_user.genre}%>
-      <%=f.label :genre, "ジャンル"%>
+      <%=f.select :division, User.divisions_i18n.keys.map{|k| [User.divisions_i18n[k], k]}, {include_blank: true, selected: current_user.division}%>
+      <%=f.label :division, "区分"%>
     </div>
 
     <div class="input-field col s12">

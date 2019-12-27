@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
   before_action :set_relation, only: %i[index show favored search]
-  before_action :forbid_test_user, only: :update
   skip_before_action :check_attributes, only: :type
   protect_from_forgery except: :search
   
@@ -38,7 +37,11 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    User.update(updateparams)
+    if current_user.email == "test@example.com"
+      render 'forbid.js.erb'
+    else
+      current_user.update(updateparams)
+    end
   end
 
   def search
@@ -64,14 +67,14 @@ class UsersController < ApplicationController
 
   def search_params
     if current_user.role == 0
-      params.require(:q).permit(:address_eq, :genre_eq, :people_eq).merge(role_eq: 1)
+      params.require(:q).permit(:address_eq, :division_eq, :people_eq).merge(role_eq: 1)
     else
-      params.require(:q).permit(:address_eq, :genre_eq, :people_eq).merge(role_eq: 0)
+      params.require(:q).permit(:address_eq, :division_eq, :people_eq).merge(role_eq: 0)
     end
   end
 
   def updateparams
-    params.require(:user).permit(:name, :email, :image, :profile, :address, :genre, :people).merge(id: current_user.id)
+    params.require(:user).permit(:name, :email, :image, :profile, :address, :division, :people).merge(id: current_user.id)
   end
 
   def typeparams
@@ -80,10 +83,4 @@ class UsersController < ApplicationController
     provision
   end
   
-  def forbid_test_user
-    if current_user.email == "test@example.com"
-      flash[:notice] = "テストユーザーのため変更できません"
-      redirect_to "/users"
-    end
-  end
 end

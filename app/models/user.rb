@@ -21,8 +21,8 @@ class User < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }, _prefix: true
-  enum genre: {
-    邦楽:1
+  enum division: {
+    中学生:1,高校生:2,大学生:3,社会人:4,その他:5
   }, _prefix: true
   enum people: {
     １人:1,２人:2,３人:3,４人:4,５人:5,

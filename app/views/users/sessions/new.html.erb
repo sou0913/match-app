@@ -12,7 +12,7 @@
   <div class="row my_wrapper">
     <div class="my_auth col s6 offset-s3">
       <div class="row section center my_wrapper valign-wrapper">
-        <div class="my_login col s12">
+        <div class="my_login my_active col s12">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
               <%= f.label :email, "メールアドレス", class:"left"%><br />
@@ -33,7 +33,7 @@
                 </div>
                 <% end %>
         </div>
-        <div class="my_signup my_active col s12">
+        <div class="my_signup col s12">
           <%= devise_error_messages! %>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
               <div class="field">
