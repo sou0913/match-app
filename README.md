@@ -6,45 +6,23 @@
 
 ## 目的
 
-- TECH::EXPERTで学んだRuby on Railsの復習
-
-## 動作環境
-
-ruby2.5.1
-rails 5.2.3
+- Ruby on RailsによるWebアプリ開発のスキル向上
+- Docker,ECS,Terraform,CircleCIを用いた開発環境の構築スキル向上
+- CSS,JavaScriptフレームワーク、Materializeを用いたマークアップスキルの向上
 
 ## 使用技術
 
-- Ruby on Railsを用いました。
-- マークアップには、フレームワークMaterializeを使用しました。
-
-## 機能について
-
-- マッチングアプリ上のユーザーは、一般に、定められた二つの属性のうちいずれかを持ちます。企業と学生団体をマッチングさせるというコンセプトで作りました。そのため、新規登録時、「企業」か「団体」かのどちらか片方を選べます。
-
-[![Image from Gyazo](https://i.gyazo.com/8c7c7ee96b180746d690bdda172e8ec6.gif)](https://gyazo.com/8c7c7ee96b180746d690bdda172e8ec6)
-
-
-- いいねをした状態、いいねをされた状態、マッチング状態の3状態を表現しました。
-
-[![Image from Gyazo](https://i.gyazo.com/50c062520210ec80df331d770845f5d4.gif)](https://gyazo.com/50c062520210ec80df331d770845f5d4)
+ruby2.5.1  
+Ruby on Rails 5.2.3  
+HTML、Sass  
+jQuery  
+AWS(ECS,ECR,RDS,Route53,ACM)
+Terraform
+CircleCI
 
 
-- レスポンシブデザインを取り入れ、スマートフォンでも快適に使えるインターフェイスとなっています。
+## 機能について  
 
-[![Image from Gyazo](https://i.gyazo.com/a023684ec55907c18c935f0787dc09f1.gif)](https://gyazo.com/a023684ec55907c18c935f0787dc09f1)
-
-
-- メッセージを送信すると非同期通信が行われ、自分、相手のブラウザに表示されます。
-
-[![Image from Gyazo](https://i.gyazo.com/bbf71985c38a75d23afe92509422c3ae.gif)](https://gyazo.com/bbf71985c38a75d23afe92509422c3ae)
-
-
-- 求める条件のユーザーを検索することが出来ます。
-
-[![Image from Gyazo](https://i.gyazo.com/9569400dfa40012a0bc4137242e33fa7.gif)](https://gyazo.com/9569400dfa40012a0bc4137242e33fa7)
-
-## 制作して良かったこと
-- Ruby on Railsを用いたアプリ作成の全体像を把握できた。
-- Materializeを用いたインターフェイスの実装を学べました。
+## 構成図
+<a href="https://gyazo.com/0dee97010cdffa9be67d7e5089fc4556"><img src="https://i.gyazo.com/0dee97010cdffa9be67d7e5089fc4556.png" alt="Image from Gyazo" width="600"/></a>
   
