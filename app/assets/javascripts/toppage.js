@@ -1,0 +1,20 @@
+$(function(){
+  $('.tabs').tabs({
+    swipeable: true
+  });
+  $('.my_test-login_tab').click(function(){
+    $('.my_test-login').addClass('my_active');
+    $('.my_login').removeClass('my_active');
+    $('.my_signup').removeClass('my_active');
+  });
+  $('.my_login_tab').click(function(){
+    $('.my_test-login').removeClass('my_active');
+    $('.my_login').addClass('my_active');
+    $('.my_signup').removeClass('my_active');
+  });
+  $('.my_signin_tab').click(function(){
+    $('.my_test-login').removeClass('my_active');
+    $('.my_login').removeClass('my_active');
+    $('.my_signup').addClass('my_active');
+  })
+});

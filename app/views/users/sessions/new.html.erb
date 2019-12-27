@@ -1,31 +1,106 @@
-<div class = authentication>
-  <div class = authentication-wrapper>
-    <h3>ログイン</h3>
-
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :email, "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password, "パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, "パスワードを記憶しますか?" %>
+<nav class="nav-extended teal darken-1">
+  <div class="nav-wrapper"> <a href="#" class="brand-logo center">Between</a> </div>
+  <div class="nav-content">
+    <ul class="tabs tabs-transparent">
+      <li class="tab right my_test-login_tab"><a href="#test1">テストユーザーでログイン</a></li>
+      <li class="tab right my_login_tab"><a class="active" href="#test2">ログイン</a></li>
+      <li class="tab right my_signin_tab"><a href="#test4">新規登録</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="my_main">
+  <div class="row my_wrapper">
+    <div class="my_auth col s6 offset-s3">
+      <div class="row section center my_wrapper valign-wrapper">
+        <div class="my_login col s12">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email, "メールアドレス", class:"left"%><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </div>
+            <div class="field">
+              <%= f.label :password, "パスワード", class:"left"%><br />
+                <%= f.password_field :password, autocomplete: "current-password" %>
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me, "パスワードを記憶しますか?" %>
+              </div>
+              <% end %>
+                <div class="actions">
+                  <%= f.submit "ログイン", class:"btn waves-effect waves-light authentication-btn" %>
+                </div>
+                <% end %>
         </div>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit "ログイン", class:"btn waves-effect waves-light authentication-btn" %>
+        <div class="my_signup my_active col s12">
+          <%= devise_error_messages! %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <div class="field">
+                <%= f.label :name, "名前", class:"left"%><br />
+                  <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+              </div>
+              <div class="field">
+                <%= f.label :email, "メールアドレス", class:"left"%><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </div>
+              <div class="field">
+                <%= f.label :password, "パスワード", class:"left"%>
+                  <% if @minimum_password_length %> <em>(<%= @minimum_password_length %> 文字以上)</em>
+                    <% end %><br />
+                      <%= f.password_field :password, autocomplete: "new-password" %>
+              </div>
+              <div class="field">
+                <%= f.label :password_confirmation, "パスワード(確認)", class:"left"%><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              </div>
+              <div class="actions">
+                <%= f.submit "新規登録", class:"btn waves-effect waves-light authentication-btn" %>
+              </div>
+              <% end %>
+        </div>
+        <div class="my_test-login col s12">
+          <%= render "testuser" %>
+        </div>
       </div>
-    <% end %>
-
-    <%= render "users/shared/links" %>
-    <%= render "testuser" %>
+    </div>
   </div>
 </div>
+  <div class="row center section">
+  <div class="col s4">
+    <i class="large material-icons blue-text text-darken-2">help</i>
+    <div class="row">
+    <div class="col s12">
+      <div class="card-panel teal left-align">
+        <span class="white-text">Betweenは洋楽器と和楽器の演奏者マッチングサービスです。</br>
+        当アプリを活用することで、今までになかったセッション体験を生み出すことができます。
+        </span>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col s4">
+    <i class="large material-icons pink-text text-darken-2">favorite</i>
+    <div class="row">
+    <div class="col s12">
+      <div class="card-panel teal left-align">
+        <span class="white-text">気になる演奏者を見つけたら、気軽にいいねしてみましょう。</br>
+        お相手からお返しのいいねがあれば、マッチング成立です。
+        </span>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="col s4">
+    <i class="large material-icons green-text text-darken-2">message</i>
+    <div class="row">
+    <div class="col s12">
+      <div class="card-panel teal left-align">
+        <span class="white-text">マッチングが成立した後は、メッセージを交換できます。</br>
+        セッションの計画を立てたり、情報交換をしてみましょう。
+        </span>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
