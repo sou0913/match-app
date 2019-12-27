@@ -1,0 +1,19 @@
+.my_main {
+  background-image: url('music.jpg');
+  background-size: cover;
+  height: 400px;
+}
+.my_wrapper {
+ width: 100%;
+ height: 100%;
+}
+.my_auth {
+  height: 100%;
+  background: rgba(255,255,255,0.7);
+}
+.my_login, .my_signup, .my_test-login{
+  display: none;
+}
+.my_active {
+  display: block;
+}
