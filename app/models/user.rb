@@ -8,10 +8,9 @@ class User < ApplicationRecord
   has_many :messages
   has_many :relations
   mount_uploader :image, ImagesUploader
-  # enum role: [
-  #   :company,
-  #   :club
-  # ]
+
+  validates :name, presence: true, length: {maximum: 40}
+  
   enum address: {
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
@@ -22,8 +21,8 @@ class User < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }, _prefix: true
-  enum genre: {
-    邦楽:1
+  enum division: {
+    中学生:1,高校生:2,大学生:3,社会人:4,その他:5
   }, _prefix: true
   enum people: {
     １人:1,２人:2,３人:3,４人:4,５人:5,

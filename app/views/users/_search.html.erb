@@ -4,8 +4,8 @@
       <%=f.label :address_eq, "所在地"%>
   </div>
   <div class="input-field col s12">
-    <%=f.select :genre_eq, User.genres.map{|key,value| [key, value]}, {include_blank: "指定なし"}, class:"search_form search_form_genre"%>
-      <%=f.label :genre_eq, "ジャンル"%>
+    <%=f.select :division_eq, User.divisions.map{|key,value| [key, value]}, {include_blank: "指定なし"}, class:"search_form search_form_division"%>
+      <%=f.label :division_eq, "区分"%>
   </div>
   <div class="input-field col s12">
     <%=f.select :people_eq, User.people.map{|key,value| [key, value]}, {include_blank: "指定なし"}, class:"search_form search_form_people"%>

@@ -107,7 +107,7 @@ jobs:
       - run:
           name: deploy
           command: |
-            aws ecs describe-task-definition --task-definition rails-service | jq '.taskDefinition | {containerDefinitions: .containerDefinitions}' > definition.json
+            aws ecs describe-task-definition --task-definition rails-service | jq '.taskDefinition | {containerDefinitions: .containerDefinitions, volumes: .volumes}' > definition.json
             aws ecs register-task-definition --execution-role-arn arn:aws:iam::486463126616:role/ecs_task_role --family rails-service --cli-input-json file://definition.json
             aws ecs update-service --cluster sample-ecs-cluster --service rails-service --task-definition rails-service
       - run:
