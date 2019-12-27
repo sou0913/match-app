@@ -9,8 +9,11 @@ class UsersController < ApplicationController
   protect_from_forgery except: :search
   
   def first
-    redirect_to root_path if current_user.role.present?
-    render :first, layout: 'noheader'
+    if current_user.role.present?
+      redirect_to root_path 
+    else 
+      render :first, layout: 'noheader'
+    end
   end
 
   def type
@@ -68,7 +71,7 @@ class UsersController < ApplicationController
   end
 
   def updateparams
-    params.require(:user).permit(:name, :email, :image, :profile, :address, :genre, :people).merge(id: params[:id])
+    params.require(:user).permit(:name, :email, :image, :profile, :address, :genre, :people).merge(id: current_user.id)
   end
 
   def typeparams
