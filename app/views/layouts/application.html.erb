@@ -9,9 +9,12 @@
           <!-- Compiled and minified CSS -->
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
           <!-- Compiled and minified JavaScript -->
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.js"></script>
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">
           <%= stylesheet_link_tag    'application', media: 'all' %>
+          
+</head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
   <div class="flash">
     <%= flash[:notice] %>
@@ -19,7 +22,7 @@
   <% if user_signed_in? %>
     <div class="navbar-fixed">
       <nav class="teal darken-1">
-        <div class="nav-wrapper container"> <a href="/" class="brand-logo">Between</a> <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <div class="nav-wrapper container"> <a href="/" class="brand-logo">isshoni</a> <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
               <%= link_to "トップページ", root_path %>
@@ -28,7 +31,13 @@
               <%= link_to "#{current_user.name}さんのマイページ", user_path(current_user) %>
             </li>
             <li>
-              <%= link_to "あなたへのいいね", favored_user_path(current_user) %>
+              <%=link_to "あなたへのいいね", be_favored_user_path(current_user)%>
+            </li>
+            <li>
+              <%=link_to "いいねしたお相手", favor_user_path(current_user)%>
+            </li>
+            <li>
+              <%=link_to "マッチング中のお相手", match_user_path(current_user)%>
             </li>
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -45,7 +54,13 @@
         <%= link_to "#{current_user.name}さんのマイページ", user_path(current_user) %>
       </li>
       <li>
-        <%= link_to "あなたへのいいね", favored_user_path(current_user) %>
+        <%= link_to "あなたへのいいね", be_favored_user_path(current_user) %>
+      </li>
+      <li>
+        <%=link_to "いいねしたお相手", favor_user_path(current_user)%>
+      </li>
+      <li>
+        <%=link_to "マッチング中のお相手", match_user_path(current_user)%>
       </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -55,19 +70,6 @@
       <main>
         <%= yield %>
       </main>
-      <div class="match-popup">
-        <div class="match-popup-wrapper">
-          <div class="match-popup-content-wrapper">
-            <div class="match-popup-content">
-              <div class="match-popup-message-wrapper">
-                <p>マッチングしました!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      </div>
       <footer class="page-footer teal darken-1">
         <div class="container">
           <div class="row">

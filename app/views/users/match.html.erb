@@ -1,6 +1,10 @@
-<% if @users.present?%>
-  <%= render @users %>
-  <%= paginate @users %>
-<% else %>
-  <p>まずはいいねを送ってみよう！</p>
-<% end %>
+<div class="container">
+  <% if @match.present?%>
+    <% @match.each do |partner| %>
+      <%= render partial: 'user', locals: {partner: partner, button: "message"} %>
+    <% end %>
+    <%= paginate @match %>
+  <% else%>
+    <p>マッチング成立後ここに表示されます</p>
+  <% end %>
+</div>

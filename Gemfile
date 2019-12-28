@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem "rspec_junit_formatter"
   gem 'pry-rails'
+  gem 'mock_redis'
 end
 
 group :development do
@@ -75,3 +76,4 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'unicorn'
 gem 'ransack'
+gem 'redis-rails'

@@ -17,7 +17,7 @@
         <%= @partner.people %>
       </li>
     </ul>
-    <%= render partial: "button", locals: button_data(current_user, @partner, @relation)%>
+    <%= render partial: "button", locals: {partner: @partner, type: @button}%>
   </div>
   <div class="col s12 m8 l9">
     <div class="section">

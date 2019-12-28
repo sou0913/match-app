@@ -1,4 +1,4 @@
-<%= search_form_for(@q, url: search_users_path, class:"section", remote: true) do |f|%>
+<%= search_form_for(@q, url: search_users_path, class:"section") do |f|%>
   <div class="input-field col s12">
     <%=f.select :address_eq, User.addresses.map{|key,value| [key, value]}, {include_blank: "指定なし"}, class:"search_form search_form_address"%>
       <%=f.label :address_eq, "所在地"%>

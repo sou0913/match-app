@@ -1,16 +1,16 @@
-<%if type == 4%>
+<%if type == "self"%>
     <%= link_to edit_user_path(current_user), class: "waves-effect waves-light btn" do %>
         設定<i class="material-icons left">settings</i>
     <% end %>
-<% elsif type == 3%>
+<% elsif type == "message"%>
   <%= link_to user_message_path(current_user, partner), class: "waves-effect waves-light btn" do %>
       メッセージ<i class="material-icons left">message</i>
   <% end %>
-<% elsif type == 2%>
+<% elsif type == "reply"%>
   <%= link_to "#", class: "waves-effect waves-light btn" do %>
       いいねお返し<i class="material-icons left">reply</i>
   <% end %>
-<% elsif type == 1%>
+<% elsif type == "done"%>
   <%= link_to "#", class: "disabled waves-effect waves-light btn no_link" do %>
       いいね済<i class="material-icons left">done</i>
   <% end %>

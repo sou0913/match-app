@@ -1,0 +1,10 @@
+<div class="container">
+  <% if @favor.present?%>
+    <% @favor.each do |partner| %>
+      <%= render partial: 'user', locals: {partner: partner, button: "done"} %>
+    <% end %>
+    <%= paginate @favor %>
+  <% else%>
+    <p>まだいいねをしていません</p>
+  <% end %>
+</div>
