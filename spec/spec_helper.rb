@@ -1,9 +1,10 @@
 require 'mock_redis'
 RSpec.configure do |config|
- 
+  
   config.before(:each) do
     redis_instance = MockRedis.new
     Redis.stub(:new).and_return(redis_instance)
+    Redis.current = Redis.new
   end
  
   config.expect_with :rspec do |expectations|
