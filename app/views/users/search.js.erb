@@ -1,8 +1,0 @@
-$(".my_users").empty();
-$(".my_users").append(
-      `<% @partners.each do |partner| %>
-        <%= render partial: 'user', locals: {partner: partner, relation: @relation} %>
-       <% end %>`
-      );
-$(".my_pagenate").empty();
-$(".my_pagenate").append(`<%= paginate @partners ,remote: true%>`)

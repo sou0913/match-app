@@ -13,12 +13,13 @@ Rails.application.routes.draw do
       resources :messages, only: :index
     end
       member do
-      get 'favored'
-      get 'match'
-      get 'result'
-      get 'first'
-      patch 'type'
-    end
+        get 'favor' 
+        get 'be_favored'
+        get 'match'
+        get 'result'
+        get 'first'
+        patch 'type'
+      end
     collection do
       get 'search'
     end

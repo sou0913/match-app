@@ -17,21 +17,20 @@ class UsersController < ApplicationController
 
   def type
     current_user.update(typeparams)
+    Redis.current.sadd("role-#{current_user.role}", current_user.id)
     redirect_to root_path
   end
 
   def index
     @users = User.all
     @q = User.ransack(params[:q])
-    @partners = if current_user.role == 1
-                  User.includes(:relations).where(role: 0).page(params[:page]).per(10)
-                else
-                  User.includes(:relations).where(role: 1).page(params[:page]).per(10)
-                end
+    ary = return_others(current_user)
+    @partners = User.includes(:relations).where(id: ary).page(params[:page]).per(10)
   end
 
   def show
     @partner = User.find(params[:id])
+    @button = relation_type(current_user, @partner)
   end
 
   def edit; end
@@ -45,18 +44,27 @@ class UsersController < ApplicationController
   end
 
   def search
-    @q = User.search(search_params)
-    @partners = @q.result(distinct: true).page(params[:page]).per(10)
-    render 'search.js.erb'
+    ary = return_others(current_user)
+    @q = User.ransack(search_params)
+    @partners = @q.result(distinct: true).where(id: ary).page(params[:page]).per(10)
   end
 
-  def favored
-    @users = User.all
-    favored_ary = []
-    @users.each do |partner|
-      favored_ary.push(partner) if search_r(current_user, partner) == 2
-      @favored = Kaminari.paginate_array(favored_ary).page(params[:page]).per(10)
-    end
+  def favor
+    ary = Redis.current.sdiff("f-#{current_user.id}", "b-#{current_user.id}")
+    partners = ary.map {|id| User.find(id)}
+    @favor = Kaminari.paginate_array(partners).page(params[:page]).per(10)
+  end
+
+  def be_favored
+    ary = Redis.current.sdiff("b-#{current_user.id}", "f-#{current_user.id}")
+    partners = ary.map {|id| User.find(id)}
+    @favored = Kaminari.paginate_array(partners).page(params[:page]).per(10)
+  end
+
+  def match
+    ary = Redis.current.sinter("f-#{current_user.id}", "b-#{current_user.id}")
+    partners = ary.map {|id| User.find(id)}
+    @match = Kaminari.paginate_array(partners).page(params[:page]).per(10)
   end
 
   private
@@ -66,11 +74,7 @@ class UsersController < ApplicationController
   end
 
   def search_params
-    if current_user.role == 0
-      params.require(:q).permit(:address_eq, :division_eq, :people_eq).merge(role_eq: 1)
-    else
-      params.require(:q).permit(:address_eq, :division_eq, :people_eq).merge(role_eq: 0)
-    end
+      params.require(:q).permit(:address_eq, :division_eq, :people_eq)
   end
 
   def updateparams
@@ -83,4 +87,28 @@ class UsersController < ApplicationController
     provision
   end
   
+  def return_others(user)
+    if user.role == 0
+      ary = Redis.current.sdiff("role-1", "f-#{user.id}", "b-#{user.id}")
+    else
+      ary = Redis.current.sdiff("role-0", "f-#{user.id}", "b-#{user.id}")
+    end
+  end
+
+  def relation_type(user,partner)
+    favor = Redis.current.sismember("f-#{user.id}",partner.id)
+    be_favored = Redis.current.sismember("b-#{user.id}", partner.id)
+    if user.id == partner.id
+      return "self"
+    elsif favor && be_favored 
+      return "message"
+    elsif !(favor) && be_favored 
+      return "reply"
+    elsif favor && !(be_favored)
+      return "done"
+    else
+      return "favorite"
+    end
+  end
+
 end
