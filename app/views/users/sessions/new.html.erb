@@ -13,7 +13,7 @@
     <div class="my_auth col s6 offset-s3">
       <div class="row section center my_wrapper valign-wrapper">
         <div class="my_login my_active col s12">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name),id:"my_login_form") do |f| %>
             <div class="field">
               <%= f.label :email, "メールアドレス", class:"left"%><br />
                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -35,27 +35,27 @@
         </div>
         <div class="my_signup col s12">
           <%= devise_error_messages! %>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"my_signup_form") do |f| %>
               <div class="field">
                 <%= f.label :name, "名前", class:"left"%><br />
-                  <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+                  <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"my_register_name"%>
               </div>
               <div class="field">
                 <%= f.label :email, "メールアドレス", class:"left"%><br />
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"my_register_email"%>
               </div>
               <div class="field">
                 <%= f.label :password, "パスワード", class:"left"%>
                   <% if @minimum_password_length %> <em>(<%= @minimum_password_length %> 文字以上)</em>
                     <% end %><br />
-                      <%= f.password_field :password, autocomplete: "new-password" %>
+                      <%= f.password_field :password, autocomplete: "new-password", class:"my_register_password"%>
               </div>
               <div class="field">
                 <%= f.label :password_confirmation, "パスワード(確認)", class:"left"%><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"my_register_password_c" %>
               </div>
               <div class="actions">
-                <%= f.submit "新規登録", class:"btn waves-effect waves-light authentication-btn" %>
+                <%= f.submit "新規登録", class:"btn waves-effect waves-light authentication-btn my_register_button" %>
               </div>
               <% end %>
         </div>

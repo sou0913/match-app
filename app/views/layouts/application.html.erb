@@ -31,7 +31,12 @@
               <%= link_to "#{current_user.name}さんのマイページ", user_path(current_user) %>
             </li>
             <li>
-              <%=link_to "あなたへのいいね", be_favored_user_path(current_user)%>
+              <%=link_to be_favored_user_path(current_user) do%>
+              あなたへのいいね
+                <%if @badge != 0%>
+                  <span class="new badge"><%=@badge%></span></a>
+                <%end%>
+              <%end%>
             </li>
             <li>
               <%=link_to "いいねしたお相手", favor_user_path(current_user)%>

@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!
-  before_action :set_relation, only: %i[index show favored search]
+  before_action :set_badge, only: %i[index show edit favor be_favored match search]
   skip_before_action :check_attributes, only: :type
   protect_from_forgery except: :search
   
@@ -69,10 +69,6 @@ class UsersController < ApplicationController
 
   private
 
-  def set_relation
-    @relation = Relation.new
-  end
-
   def search_params
       params.require(:q).permit(:address_eq, :division_eq, :people_eq)
   end
@@ -109,6 +105,12 @@ class UsersController < ApplicationController
     else
       return "favorite"
     end
+  end
+
+  # 今何人にいいねされているかカウント
+  def set_badge()
+    be_favored = Redis.current.sdiff("b-#{current_user.id}", "f-#{current_user.id}")
+    @badge = be_favored.length
   end
 
 end
