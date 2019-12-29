@@ -9,4 +9,6 @@ end
   User.create(name: "test#{i}", email: "test#{i}@test.com", role: 1,
   password: "password", password_confirmation: "password")
   Redis.current.sadd("role-1", i)
+  Redis.current.sadd("f-#{i}", 1)
+  Redis.current.sadd("b-1", i)
 end
