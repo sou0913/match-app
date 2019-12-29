@@ -35,15 +35,8 @@
           "readOnly": false
         }
       ],
-      "volumesFrom": [],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "sample-service",
-          "awslogs-region": "ap-northeast-1",
-          "awslogs-stream-prefix": "unicorn"
-        }
-      }
+      "volumesFrom": []
+      
     },
     {
       "name": "nginx-container",
@@ -73,15 +66,7 @@
           "readOnly": false
         }
       ],
-      "volumesFrom": [],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "sample-service",
-          "awslogs-region": "ap-northeast-1",
-          "awslogs-stream-prefix": "nginx"
-        }
-      }
+      "volumesFrom": []
     }
   ],
   "volumes": [
