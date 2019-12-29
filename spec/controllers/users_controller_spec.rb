@@ -28,10 +28,7 @@ describe UsersController, type: :controller do
       get :index
       expect(response).to redirect_to(user_session_path)
     end
-    it 'assigns the requested users to @users' do
-      users = create_list(:user, 3)
-      get :index
-      expect(response).to render_template :index
+
   end
   describe 'get #show' do
     it 'renders the :show template' do
@@ -71,7 +68,7 @@ describe UsersController, type: :controller do
     it 'renders the :be_favored template' do
       user = create(:user)
       sign_in user
-      get :be_favored, params {id: user}
+      get :be_favored, params: {id: user}
       expect(response).to render_template :be_favored
     end
   end
@@ -79,7 +76,7 @@ describe UsersController, type: :controller do
     it 'renders the :match template' do
       user = create(:user)
       sign_in user
-      get :match, params {id: user}
+      get :match, params: {id: user}
       expect(response).to render_template :match
     end
   end

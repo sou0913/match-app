@@ -46,6 +46,7 @@ group :development, :test do
   gem "rspec_junit_formatter"
   gem 'pry-rails'
   gem 'mock_redis'
+  gem 'faker'
 end
 
 group :development do

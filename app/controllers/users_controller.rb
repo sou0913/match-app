@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
     @q = User.ransack(params[:q])
     ary = return_others(current_user)
     @partners = User.includes(:relations).where(id: ary).page(params[:page]).per(10)

@@ -39,7 +39,7 @@ describe User do
     it 'is invalid to two users have same email' do
       user = build(:user)
       user.save()
-      user2 = build(:user)
+      user2 = build(:user, email: user.email)
       user2.valid?
       expect(user2.errors[:email]). to include("はすでに存在します")
     end
