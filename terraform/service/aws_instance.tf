@@ -6,6 +6,7 @@ resource "aws_instance" "sample" {
   subnet_id = data.terraform_remote_state.vpc.outputs.public_subnet_1_id
   user_data = file("./user_data.sh")
   associate_public_ip_address = true
+  key_name = aws_key_pair.auth.id
 
   vpc_security_group_ids = [
     "${aws_security_group.instance.id}",
