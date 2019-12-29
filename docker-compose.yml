@@ -27,12 +27,12 @@ services:
     volumes:
       - ./redis:/var/lib/redis
     command: redis-server
-  # nginx-server:
-  #   build: ./nginx
-  #   ports:
-  #     - 80:8080
-  #   volumes:
-  #     - sockets_share:/app/sockets
+#   nginx-server:
+#     build: ./nginx
+#     ports:
+#       - 80:8080
+#     volumes:
+#       - sockets_share:/app/sockets
 
 # volumes:
 #   sockets_share:
