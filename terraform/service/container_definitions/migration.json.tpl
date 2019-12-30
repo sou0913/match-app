@@ -6,7 +6,7 @@
     "memory": null,
     "memoryReservation": 600,
     "essential": true,
-    "command": ["bundle", "exec","rake", "db:create", "db:migrate"],
+    "command": ["bundle", "exec","rake","db:migrate"],
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {

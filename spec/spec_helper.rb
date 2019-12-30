@@ -14,6 +14,8 @@ Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
+Capybara.javascript_driver = :selenium_chrome
+
 RSpec.configure do |config|
   
   config.before(:each) do

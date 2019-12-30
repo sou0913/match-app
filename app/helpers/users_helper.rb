@@ -4,7 +4,7 @@ module UsersHelper
 
   def select_image(user)
     if user.image?
-      user.image.url
+      user.image.to_s
     else
       'no_image.png'
     end

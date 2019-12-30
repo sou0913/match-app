@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'devise'
 gem 'enum_help'
 gem 'jquery-rails'
