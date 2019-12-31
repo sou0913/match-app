@@ -87,6 +87,13 @@ jobs:
             docker build -t ${ECR_DOMAIN}:${NGINX_TAG} -t ${ECR_DOMAIN}:nginx-latest nginx/
             docker push ${ECR_DOMAIN}:${NGINX_TAG}
             docker push ${ECR_DOMAIN}:nginx-latest
+      - run:
+          name: redis image
+          command: |
+            REDIS_TAG=$(echo ${CIRCLE_SHA1} | cut -c 13-18)
+            docker build -t ${ECR_DOMAIN}:${REDIS_TAG} -t ${ECR_DOMAIN}:redis-latest redis/
+            docker push ${ECR_DOMAIN}:${NGINX_TAG}
+            docker push ${ECR_DOMAIN}:redis-latest
   deploy:
     docker:
       - image: circleci/python:3.7

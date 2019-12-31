@@ -67,6 +67,26 @@
         }
       ],
       "volumesFrom": []
+    },
+    {
+      "name": "redis-container",
+      "image": "486463126616.dkr.ecr.ap-northeast-1.amazonaws.com/sample-image:redis-latest",
+      "cpu": 333,
+      "memoryReservation": 600,
+      "portMappings": [
+        {
+          "containerPort": 6379,
+          "hostPort": 6379,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "command": [
+        "redis-server"
+      ],
+      "environment": [],
+      "mountPoints": [],
+      "volumesFrom": []
     }
   ],
   "volumes": [
