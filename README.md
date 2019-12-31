@@ -16,12 +16,11 @@
 ## 使用技術
 
 Ruby2.5.1  
-Ruby on Rails 5.2.3  
+Ruby on Rails 5.2.3    
 HTML、Sass  
 jQuery  
-AWS(ECS,ECR,RDS,ElastiCache,S3,Route53,ACM)
-Terraform
-CircleCI
+AWS(ECS、ECR、RDS、ElastiCache、S3、Route53、ACM)  
+Terraform、CircleCI
 
 
 ## コンセプト
