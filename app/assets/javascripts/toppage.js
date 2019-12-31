@@ -1,4 +1,12 @@
 $(function(){
+  var controller = $('body').data("controller");
+  var action = $('body').data("action");
+  try {
+    if (controller != "sessions" || action != "new" ){throw new Error(e)}
+    $('body').css("display", "none");
+    $('body').fadeIn(3000);
+  }catch(e){}
+
   $('.tabs').tabs({
     swipeable: true
   });

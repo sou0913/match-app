@@ -12,8 +12,8 @@ $(function() {
     switch(i_tag.text()) {
       case "favorite":
         e.preventDefault();
-        i_tag.text("done");
-        i_tag.parent().addClass("disabled");
+        $(this).empty();
+        $(this).append(btn_html("#","done","いいね済","disabled no_link"))
         break;
       case "done":
         return false;
