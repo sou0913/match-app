@@ -1,5 +1,4 @@
 class Api::RelationsController < ApplicationController
-  include ApplicationHelper
 
   def index
     partner_id = params[:id].to_i

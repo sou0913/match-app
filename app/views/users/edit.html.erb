@@ -1,69 +1,37 @@
-<%# <div class="user-edit-form">
-  <div class="user-edit-form__wrapper"> %>
-  <div class="row">
-    <%= form_with model: current_user, class:"col s12" do |f|%>
+<div class="row section">
+  <%= form_with model: current_user, class:"col s12 my_edit_form" do |f|%>
     <div class="row">
       <div class="row edit-name-email-wrapper">
-        <div class="input-field col s6 edit-name-email-field">
-          <i class="material-icons prefix">account_circle</i>
-          <%=f.text_field :name, id: "icon_prefix", class: "validate", value: current_user.name %>
-          <label for="icon_prefix">お名前</label>
-        </div>
-        <div class="input-field col s6 edit-name-email-field">
-          <i class="material-icons prefix">email</i>
-          <%=f.email_field :email, id:"icon_telephone", class: "validate", value: current_user.email %>
-          <label for="icon_telephone">メールアドレス</label>
-        </div>
-      </div>    
-    </div>
-
-        <div class="row">
-          <div class="input-field col s12">
-            <%=f.text_area :profile, id:"textarea1", class:"materialize-textarea", value: current_user.profile %>
-            <label for="textarea1">プロフィール</label>
-          </div>
-        </div>
-          
-
-      <div class="file-field input-field">
-        <div class="btn">
-          <span>プロフィール画像</span>
-          <%=f.file_field :image, value: current_user.image %>
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
-        </div>
+        <div class="input-field col s6 edit-name-email-field"> <i class="material-icons prefix">account_circle</i>
+          <%=f.text_field :name, id: "icon_prefix", class: "validate", value: current_user.name %> <label for="icon_prefix">お名前</label> </div>
+        <div class="input-field col s6 edit-name-email-field"> <i class="material-icons prefix">email</i>
+          <%=f.email_field :email, id:"icon_telephone", class: "validate", value: current_user.email, disabled: true %> <label for="icon_telephone">メールアドレス</label> </div>
       </div>
-
-
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <%=f.text_area :profile, id:"textarea1", class:"materialize-textarea", value: current_user.profile %> <label for="textarea1">プロフィール</label> </div>
+    </div>
+    <div class="file-field input-field">
+      <div class="btn"> <span>プロフィール画像</span>
+        <%=f.file_field :image, value: current_user.image %>
+      </div>
+      <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>
+    </div>
     <div class="input-field col s12">
       <%=f.select :address, User.addresses_i18n.keys.map{|k| [User.addresses_i18n[k], k]}, {include_blank: true, selected: current_user.address}%>
-      <%=f.label :address, "所在地"%>
+        <%=f.label :address, "所在地"%>
     </div>
-
     <div class="input-field col s12">
       <%=f.select :division, User.divisions_i18n.keys.map{|k| [User.divisions_i18n[k], k]}, {include_blank: true, selected: current_user.division}%>
-      <%=f.label :division, "区分"%>
+        <%=f.label :division, "区分"%>
     </div>
-
     <div class="input-field col s12">
       <%=f.select :people, User.people_i18n.keys.map{|k| [User.people_i18n[k], k]}, {include_blank: true, selected: current_user.people}%>
-      <%=f.label :people, "人数"%>
+        <%=f.label :people, "人数"%>
     </div>
-
     <div class="user-edit-submit-wrapper">
       <%=f.submit "保存する", class:"waves-effect waves-light btn-large user-edit-submit-btn" %>
     </div>
-    <% end %>
-  <%# </div>
-</div> %>
+  <% end %>
 </div>
-<div class="popup">
-    <div class="popup-content">
-      <p>保存しました</p>
-      <%=link_to "マイページに戻る", user_path(current_user)%>
-    </div>
-</div>
-
-
-      

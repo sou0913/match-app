@@ -92,7 +92,7 @@ jobs:
           command: |
             REDIS_TAG=$(echo ${CIRCLE_SHA1} | cut -c 13-18)
             docker build -t ${ECR_DOMAIN}:${REDIS_TAG} -t ${ECR_DOMAIN}:redis-latest redis/
-            docker push ${ECR_DOMAIN}:${NGINX_TAG}
+            docker push ${ECR_DOMAIN}:${REDIS_TAG}
             docker push ${ECR_DOMAIN}:redis-latest
   deploy:
     docker:

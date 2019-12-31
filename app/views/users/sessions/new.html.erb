@@ -13,7 +13,7 @@
     <div class="my_auth col s6 offset-s3">
       <div class="row section center my_wrapper valign-wrapper">
         <div class="my_login my_active col s12">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name),id:"my_login_form") do |f| %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"my_login_form") do |f| %>
             <div class="field">
               <%= f.label :email, "メールアドレス", class:"left"%><br />
                 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -35,7 +35,7 @@
         </div>
         <div class="my_signup col s12">
           <%= devise_error_messages! %>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"my_signup_form") do |f| %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{id:"my_signup_form"}) do |f| %>
               <div class="field">
                 <%= f.label :name, "名前", class:"left"%><br />
                   <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"my_register_name"%>

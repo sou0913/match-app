@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
   resources :relations, only: %i[create destroy]
   namespace :api do
+    resources :users, only: :index
     resources :relations, only: :index  
   end
 end
