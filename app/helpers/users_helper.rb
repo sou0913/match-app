@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module UsersHelper
-
   def select_image(user)
     if user.image?
       user.image.to_s

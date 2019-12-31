@@ -1,4 +1,4 @@
-@dir = "/app/"
+@dir = '/app/'
 worker_processes 1
 working_directory @dir
 timeout 30

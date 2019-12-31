@@ -12,14 +12,14 @@ Rails.application.routes.draw do
     namespace :api do
       resources :messages, only: :index
     end
-      member do
-        get 'favor' 
-        get 'be_favored'
-        get 'match'
-        get 'result'
-        get 'first'
-        patch 'type'
-      end
+    member do
+      get 'favor'
+      get 'be_favored'
+      get 'match'
+      get 'result'
+      get 'first'
+      patch 'type'
+    end
     collection do
       get 'search'
     end
@@ -27,6 +27,6 @@ Rails.application.routes.draw do
   resources :relations, only: %i[create destroy]
   namespace :api do
     resources :users, only: :index
-    resources :relations, only: :index  
+    resources :relations, only: :index
   end
 end

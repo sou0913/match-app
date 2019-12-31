@@ -9,7 +9,7 @@ end
 
 Capybara.register_driver :selenium_chrome do |app|
   options = Selenium::WebDriver::Chrome::Service::Options.new
-  options.add_argument("headless")
+  options.add_argument('headless')
   options.add_argument('--disable-gpu')
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
@@ -17,13 +17,12 @@ end
 Capybara.javascript_driver = :selenium_chrome
 
 RSpec.configure do |config|
-  
   config.before(:each) do
     redis_instance = MockRedis.new
     Redis.stub(:new).and_return(redis_instance)
     Redis.current = Redis.new
   end
- 
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -33,6 +32,4 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-
- 
 end
