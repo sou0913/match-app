@@ -11,9 +11,9 @@
       <div class="card-action">
       <div class="between-btn section" data-user="<%=current_user.id%>" data-partner="<%=partner.id%>">
         <%=render partial: 'button', locals:{partner: partner, type: button}%>
-      </div>
+      </%=partner.id%>
       <%=link_to user_path(partner), class:"waves-effect waves-light btn" do %>プロフィールを見る<%end%>
-      </div>
+      </%=@partプロフィールを見る<%end%>
     </div>
   </div>
 </div>

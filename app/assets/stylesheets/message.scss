@@ -1,15 +1,12 @@
 .message-space-main{
   width: 100%;
   flex: 1 0 auto;
-  max-height: 40vh;
+  max-height: 65vh;
   overflow: scroll;
 }
 .message-send-tools {
 
   width: 100%;
-}
-.message-send-btn {
-  display: none;
 }
 .message-block {
   border: solid 1px;

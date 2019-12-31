@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :check_attributes, unless: :devise_controller?
 
-  helper_method :search_r, :button_t
-
   private
 
   def configure_permitted_parameters

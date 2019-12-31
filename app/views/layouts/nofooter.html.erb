@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MatchApp</title>
+  <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+      <%= javascript_include_tag 'application' %>
+        <%# reset-css %>
+          <!-- Compiled and minified CSS -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+          <!-- Compiled and minified JavaScript -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.js"></script>
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">
+          <%= stylesheet_link_tag    'application', media: 'all' %>
+          
+</head>
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="navbar-fixed">
+      <nav class="teal darken-1">
+        <div class="nav-wrapper"> <a href="/" class="brand-logo">　isshoni</a> <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <%= link_to "トップページ", root_path %>
+            </li>
+            <li>
+              <%= link_to "#{current_user.name}さんのマイページ", user_path(current_user) %>
+            </li>
+            <li>
+              <%=link_to be_favored_user_path(current_user) do%>
+              あなたへのいいね
+                <%if @badge != 0%>
+                  <span class="new badge"><%=@badge%></span></a>
+                <%end%>
+              <%end%>
+            </li>
+            <li>
+              <%=link_to "いいねしたお相手", favor_user_path(current_user)%>
+            </li>
+            <li>
+              <%=link_to "マッチング中のお相手", match_user_path(current_user)%>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <ul class="side-nav" id="mobile-demo">
+      <li>
+        <%= link_to "トップページ", root_path %>
+      </li>
+      <li>
+        <%= link_to "#{current_user.name}さんのマイページ", user_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "あなたへのいいね", be_favored_user_path(current_user) %>
+      </li>
+      <li>
+        <%=link_to "いいねしたお相手", favor_user_path(current_user)%>
+      </li>
+      <li>
+        <%=link_to "マッチング中のお相手", match_user_path(current_user)%>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+    <% end %>
+      <main>
+        <%= yield %>
+      </main>
+</body>
+</html>

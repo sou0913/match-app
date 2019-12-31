@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :messages
   has_many :relations
-  # mount_uploader :image, ImagesUploader
+  mount_uploader :image, ImagesUploader
 
   validates :name, presence: true, length: {maximum: 40}
   

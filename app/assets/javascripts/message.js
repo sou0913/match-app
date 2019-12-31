@@ -1,6 +1,15 @@
 $(function(){
 var controller = $('body').data("controller");
 var action = $('body').data("action");
+
+$("#message-send-btn").click(function(e) {
+  var message = $("#message-content").val();
+  if (message.length < 1) {
+    e.preventDefault();
+  }
+})
+
+// メッセージの自動更新機能
 try {
   if (controller != "messages" || action != "show" ){throw new Error(e)}
   var user_id = $("#message-space-main").data("userId");

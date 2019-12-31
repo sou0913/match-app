@@ -68,6 +68,22 @@ class UsersController < ApplicationController
 
   private
 
+  def relation_type(user,partner)
+    favor = Redis.current.sismember("f-#{user.id}",partner.id)
+    be_favored = Redis.current.sismember("b-#{user.id}", partner.id)
+    if user.id == partner.id
+      return "self"
+    elsif favor && be_favored 
+      return "message"
+    elsif !(favor) && be_favored 
+      return "reply"
+    elsif favor && !(be_favored)
+      return "done"
+    else
+      return "favorite"
+    end
+  end
+
   def search_params
       params.require(:q).permit(:address_eq, :division_eq, :people_eq)
   end
@@ -87,22 +103,6 @@ class UsersController < ApplicationController
       ary = Redis.current.sdiff("role-1", "f-#{user.id}", "b-#{user.id}")
     else
       ary = Redis.current.sdiff("role-0", "f-#{user.id}", "b-#{user.id}")
-    end
-  end
-
-  def relation_type(user,partner)
-    favor = Redis.current.sismember("f-#{user.id}",partner.id)
-    be_favored = Redis.current.sismember("b-#{user.id}", partner.id)
-    if user.id == partner.id
-      return "self"
-    elsif favor && be_favored 
-      return "message"
-    elsif !(favor) && be_favored 
-      return "reply"
-    elsif favor && !(be_favored)
-      return "done"
-    else
-      return "favorite"
     end
   end
 
