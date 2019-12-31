@@ -24,5 +24,4 @@ CircleCI
 ## 機能について  
 
 ## 構成図
-<a href="https://gyazo.com/0dee97010cdffa9be67d7e5089fc4556"><img src="https://i.gyazo.com/0dee97010cdffa9be67d7e5089fc4556.png" alt="Image from Gyazo" width="600"/></a>
-  
+<a href="https://gyazo.com/88a507f2dba614129ba91cb503a86022"><img src="https://i.gyazo.com/88a507f2dba614129ba91cb503a86022.png" alt="Image from Gyazo" width="600"/></a>
