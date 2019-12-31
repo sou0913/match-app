@@ -19,9 +19,9 @@ gem 'devise'
 gem 'enum_help'
 gem 'jquery-rails'
 gem 'kaminari'
-gem 'unicorn'
 gem 'ransack'
 gem 'redis-rails'
+gem 'unicorn'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

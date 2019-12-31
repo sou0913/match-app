@@ -35,8 +35,9 @@
           "readOnly": false
         }
       ],
-      "volumesFrom": []
-      
+      "links": [
+        "redis-container:redis-container"
+      ]
     },
     {
       "name": "nginx-container",
