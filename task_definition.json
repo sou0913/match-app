@@ -37,7 +37,15 @@
       ],
       "links": [
         "redis-container:redis-container"
-      ]
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "sample-service",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "unicorn"
+        }
+      }
     },
     {
       "name": "nginx-container",
@@ -67,7 +75,14 @@
           "readOnly": false
         }
       ],
-      "volumesFrom": []
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "sample-service",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "nginx"
+        }
+      }
     },
     {
       "name": "redis-container",
@@ -85,9 +100,14 @@
       "command": [
         "redis-server"
       ],
-      "environment": [],
-      "mountPoints": [],
-      "volumesFrom": []
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "sample-service",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "redis"
+        }
+      }
     }
   ],
   "volumes": [
