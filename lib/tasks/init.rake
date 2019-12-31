@@ -1,9 +1,9 @@
-namespace :delete do
+namespace :init do
   desc "delete messages"
   task messages: :environment do
     Message.all.delete_all
   end
-  desc "delete relations"
+  desc "rebuild relations"
   task relations: :environment do
     Redis.current.flushall()
     [*(1..20)].each do |i|

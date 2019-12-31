@@ -16,7 +16,7 @@
 tmp/development_secret.txt
 tmp/restart.txt
 
-
+git 
 !/log/.keep
 !/tmp/.keep
 
@@ -37,3 +37,4 @@ terraform/*/.terraform
 /config/master.key
 .docker-env
 postgres/
+redis/data/*
