@@ -6,13 +6,13 @@
 
 ## 目的
 
-- Ruby on RailsによるWebアプリ開発のスキル向上
-- Docker,ECS,Terraform,CircleCIを用いた開発環境の構築スキル向上
-- CSS,JavaScriptフレームワーク、Materializeを用いたマークアップスキルの向上
+- Ruby on RailsによるWebアプリ開発のスキルの向上
+- Docker,ECS,Terraform,CircleCIを用いた開発環境の構築スキルの向上
+- jQuery、Materializeなどフレームワークを用いたマークアップスキルの向上
 
 ## 使用技術
 
-ruby2.5.1  
+Ruby2.5.1  
 Ruby on Rails 5.2.3  
 HTML、Sass  
 jQuery  
@@ -21,7 +21,19 @@ Terraform
 CircleCI
 
 
-## 機能について  
+## コンセプト
+
+- コンセプトは、「洋楽器（バイオリンなど）演奏者」と「和楽器演奏者」のマッチングサービスです。
+- 自身が三味線を演奏していた頃、洋楽器とのセッションがもっと気軽にできるようになればなと考えていたことがきっかけです。
+
+## 機能
+
+- いいねをする、いいねをされる、マッチングする。
+- マッチングした相手とメッセージの交換をする。
+- ユーザーを検索する。
+- プロフィールを公開、編集する。
 
 ## 構成図
 <a href="https://gyazo.com/88a507f2dba614129ba91cb503a86022"><img src="https://i.gyazo.com/88a507f2dba614129ba91cb503a86022.png" alt="Image from Gyazo" width="600"/></a>
+</br>
+- なお、12/31より費用削減のため、ElastiCacheを使わず、Dockerコンテナ内でRedisを立ち上げています。
