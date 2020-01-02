@@ -1,4 +1,8 @@
 # Railsを用いたマッチングアプリの制作
+<a href="https://isshoni.link/">
+  https://isshoni.link/
+</a>
+</br>
 </br>
 <a href="https://gyazo.com/7e071924eb181df9d0cd69c7d32931d0"><img src="https://i.gyazo.com/7e071924eb181df9d0cd69c7d32931d0.png" alt="Image from Gyazo" width="400"/></a>
 </br>  
@@ -39,3 +43,7 @@ Terraform、CircleCI
 <a href="https://gyazo.com/f1300906f3c21b86d1c6387543037d3c"><img src="https://i.gyazo.com/f1300906f3c21b86d1c6387543037d3c.png" alt="Image from Gyazo" width="600"/></a>
 </br>
 - なお、12/31より費用削減のため、ElastiCacheを使わず、Dockerコンテナ内でRedisを立ち上げています。
+
+## その他
+- テストデータは定期的にリセットしております。
+
