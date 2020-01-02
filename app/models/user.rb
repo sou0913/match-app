@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :relations
   mount_uploader :image, ImagesUploader
+  mount_uploader :audio, AudioUploader
 
   validates :name, presence: true, length: { maximum: 40 }
 

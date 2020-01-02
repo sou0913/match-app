@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'carrierwave'
+gem 'carrierwave-audio'
 gem 'devise'
 gem 'enum_help'
 gem 'fog-aws'
@@ -21,6 +22,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'ransack'
 gem 'redis-rails'
+gem "ruby-sox"
 gem 'unicorn'
 
 group :development, :test do

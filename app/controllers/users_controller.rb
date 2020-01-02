@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   end
 
   def updateparams
-    params.require(:user).permit(:name, :email, :image, :profile, :address, :division, :people).merge(id: current_user.id)
+    params.require(:user).permit(:name, :email, :image, :profile, :address, :division, :people, :audio).merge(id: current_user.id)
   end
 
   def typeparams
