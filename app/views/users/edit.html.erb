@@ -18,6 +18,12 @@
       </div>
       <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>
     </div>
+    <div class="file-field input-field">
+      <div class="btn"> <span>演奏音声ファイル</span>
+        <%=f.file_field :audio, value: current_user.audio %>
+      </div>
+      <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>
+    </div>
     <div class="input-field col s12">
       <%=f.select :address, User.addresses_i18n.keys.map{|k| [User.addresses_i18n[k], k]}, {include_blank: true, selected: current_user.address}%>
         <%=f.label :address, "所在地"%>
