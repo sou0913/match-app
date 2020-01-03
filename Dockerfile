@@ -18,7 +18,7 @@ RUN \
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install nodejs
 RUN apt-get -y install vim
-RUN apt-get -y install libsox-fmt-all sox libchromaprint-devi 
+RUN apt-get -y install libsox-fmt-all sox
 
 
 ADD . $APP_ROOT

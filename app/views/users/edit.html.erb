@@ -14,13 +14,13 @@
     </div>
     <div class="file-field input-field">
       <div class="btn"> <span>プロフィール画像</span>
-        <%=f.file_field :image, value: current_user.image %>
+        <%=f.file_field :image, value: current_user.image, accept:"image/*" %>
       </div>
       <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>
     </div>
     <div class="file-field input-field">
-      <div class="btn"> <span>演奏音声ファイル</span>
-        <%=f.file_field :audio, value: current_user.audio %>
+      <div class="btn"> <span>演奏音声ファイル(mp3)</span>
+        <%=f.file_field :audio, value: current_user.audio, accept:".mp3" %>
       </div>
       <div class="file-path-wrapper"> <input class="file-path validate" type="text"> </div>
     </div>
