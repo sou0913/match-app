@@ -18,7 +18,7 @@
       </li>
     </ul>
     <%if @partner.audio.present?%>
-      <%=audio_tag @partner.audio, autoplay:true, controls: true%>
+      <%=audio_tag @partner.audio, autoplay:false, controls: true%>
     <%end%>  
     <%= render partial: "button", locals: {partner: @partner, type: @button}%>
   </div>
