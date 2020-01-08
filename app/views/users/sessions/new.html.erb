@@ -2,7 +2,6 @@
   <div class="nav-wrapper"> <a href="#" class="brand-logo center">isshoni</a> </div>
   <div class="nav-content">
     <ul class="tabs tabs-transparent">
-      <li class="tab right my_test-login_tab"><a href="#test1">テストユーザーでログイン</a></li>
       <li class="tab right my_login_tab"><a class="active" href="#test2">ログイン</a></li>
       <li class="tab right my_signin_tab"><a href="#test4">新規登録</a></li>
     </ul>
@@ -27,11 +26,14 @@
                 <%= f.check_box :remember_me %>
                   <%= f.label :remember_me, "パスワードを記憶しますか?" %>
               </div>
-              <% end %>
-                <div class="actions">
-                  <%= f.submit "ログイン", class:"btn waves-effect waves-light authentication-btn" %>
-                </div>
-                <% end %>
+            <% end %>
+              <div class="actions">
+                <%= f.submit "ログイン", class:"btn waves-effect waves-light authentication-btn" %>
+              </div>
+            <% end %>
+            <div class="section">
+              <%= render "testuser" %>
+            </div>
         </div>
         <div class="my_signup col s12">
           <%= devise_error_messages! %>
@@ -58,9 +60,6 @@
                 <%= f.submit "新規登録", class:"btn waves-effect waves-light authentication-btn my_register_button" %>
               </div>
               <% end %>
-        </div>
-        <div class="my_test-login col s12">
-          <%= render "testuser" %>
         </div>
       </div>
     </div>

@@ -14,9 +14,7 @@
       ],
       "essential": true,
       "command": [
-        "unicorn",
-        "-c",
-        "/app/config/unicorn.rb"
+        "unicorn","-c","/app/config/unicorn.rb"
       ],
       "environment": [
         {

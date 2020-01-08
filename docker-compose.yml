@@ -27,13 +27,6 @@ services:
     volumes:
       - ./redis/data:/var/lib/redis
     command: redis-server
-  elasticsearch:
-    build: elasticsearch/ 
-    ports:
-      - 9200:9200
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false
 #   nginx-server:
 #     build: ./nginx
 #     ports:

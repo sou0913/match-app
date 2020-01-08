@@ -14,7 +14,7 @@
 /tmp/storage
 tmp/development_secret.txt
 tmp/restart.txt
-
+tmp/pids/*.pid
 git 
 !/log/.keep
 !/tmp/.keep
@@ -37,3 +37,4 @@ terraform/*/.terraform
 .docker-env
 postgres/*
 redis/data/*
+

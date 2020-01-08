@@ -1,0 +1,47 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "sample-rails",
+      "image": "486463126616.dkr.ecr.ap-northeast-1.amazonaws.com/sample-image:unicorn-latest",
+      "cpu": 200,
+      "memoryReservation": 600,
+      "portMappings": [],
+      "essential": true,
+      "command": [
+        "bundle",
+        "exec",
+        "rake",
+        "init:relations"
+      ],
+      "environment": [],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "secrets": [
+        {
+          "name": "DB_HOST",
+          "valueFrom": "DB_HOST"
+        },
+        {
+          "name": "DB_USER",
+          "valueFrom": "DB_USER"
+        },
+        {
+          "name": "DB_PASSWORD",
+          "valueFrom": "DB_PASSWORD"
+        },
+        {
+          "name": "RACK_ENV",
+          "valueFrom": "RACK_ENV"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "sample-service",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "init"
+        }
+      }
+    }
+  ]
+}

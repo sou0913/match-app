@@ -16,10 +16,10 @@ RUN \
   bundle install && \
   rm -rf ~/.gem
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
-RUN apt-get install nodejs
-RUN apt-get -y install vim
-RUN apt-get -y install libsox-fmt-all sox
-RUN apt-get -y install cron
+RUN apt-get install nodejs -y --no-install-recommends
+RUN apt-get install vim -y --no-install-recommends
+RUN apt-get install libsox-fmt-all sox -y --no-install-recommends
+RUN apt-get install cron -y --no-install-recommends
 
 ADD . $APP_ROOT
 
