@@ -8,8 +8,8 @@ $(function() {
   $(".my_register_button").click(function(e){
     e.preventDefault();
     var errMsg = "";
-    var name = $(".my_register_name").val();
-    var email = $(".my_register_email").val();
+    var name = $("#my_register_name").val();
+    var email = $("#my_register_email").val();
     $.ajax({
       url:'/api/users',
       type:'get',
@@ -20,8 +20,8 @@ $(function() {
       if(response.result == "no") {
         errMsg += "登録済みのemailです\n";
       }
-      var password = $(".my_register_password").val();
-      var password_c = $(".my_register_password_c").val();
+      var password = $("#my_register_password").val();
+      var password_c = $("#my_register_password_c").val();
       errMsg += isEmpty(name, "名前");
       errMsg += isEmpty(email,"eメール");
       errMsg += isEmpty(password, "パスワード");

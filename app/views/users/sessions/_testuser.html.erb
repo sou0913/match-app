@@ -1,10 +1,10 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "my_testuser_form",class:"my_testuser_form"}) do |f| %>
     <div class="field">
-    <%= f.hidden_field :email, value: "test@example.com" %>
+    <%= f.hidden_field :email, value: "test@example.com", id: "my_testuser_email" %>
     </div>
 
     <div class="field">
-    <%= f.hidden_field :password, value: "testtest" %>
+    <%= f.hidden_field :password, value: "testtest", id: "my_testuser_password" %>
     </div>
 
     <div class="actions">

@@ -12,14 +12,14 @@
     <div class="my_auth col s6 offset-s3">
       <div class="row section center my_wrapper valign-wrapper">
         <div class="my_login my_active col s12">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name), class:"my_login_form") do |f| %>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "my_login_form", class: "my_login_form"})  do |f| %>
             <div class="field">
               <%= f.label :email, "メールアドレス", class:"left"%><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "my_login_email" %>
             </div>
             <div class="field">
               <%= f.label :password, "パスワード", class:"left"%><br />
-                <%= f.password_field :password, autocomplete: "current-password" %>
+                <%= f.password_field :password, autocomplete: "current-password", id: "my_login_password" %>
             </div>
             <% if devise_mapping.rememberable? %>
               <div class="field">
@@ -28,7 +28,7 @@
               </div>
             <% end %>
               <div class="actions">
-                <%= f.submit "ログイン", class:"btn waves-effect waves-light authentication-btn" %>
+                <%= f.submit "ログイン", class:"btn waves-effect waves-light authentication-btn", id:"my_login_btn" %>
               </div>
             <% end %>
             <div class="section">
@@ -37,24 +37,24 @@
         </div>
         <div class="my_signup col s12">
           <%= devise_error_messages! %>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{id:"my_signup_form"}) do |f| %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html:{id:"my_signup_form", class:"my_signup_form"}) do |f| %>
               <div class="field">
                 <%= f.label :name, "名前", class:"left"%><br />
-                  <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"my_register_name"%>
+                  <%= f.text_field :name, autofocus: true, autocomplete: "name", id: "my_register_name"%>
               </div>
               <div class="field">
                 <%= f.label :email, "メールアドレス", class:"left"%><br />
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"my_register_email"%>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "my_register_email"%>
               </div>
               <div class="field">
                 <%= f.label :password, "パスワード", class:"left"%>
                   <% if @minimum_password_length %> <em>(<%= @minimum_password_length %> 文字以上)</em>
                     <% end %><br />
-                      <%= f.password_field :password, autocomplete: "new-password", class:"my_register_password"%>
+                      <%= f.password_field :password, autocomplete: "new-password", id: "my_register_password"%>
               </div>
               <div class="field">
                 <%= f.label :password_confirmation, "パスワード(確認)", class:"left"%><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"my_register_password_c" %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", id:"my_register_password_c" %>
               </div>
               <div class="actions">
                 <%= f.submit "新規登録", class:"btn waves-effect waves-light authentication-btn my_register_button" %>
@@ -70,7 +70,6 @@
     <i class="large material-icons my_top_icon">help</i>
     <div class="row">
     <div class="col s12">
-      <%=image_tag "top.png", class:"responsive-img"%>
       <div class="card-panel teal left-align">
         <span class="white-text">ISSHONIは洋楽器と和楽器の演奏者マッチングサービスです。</br>
         当アプリを活用することで、今までになかったセッション体験を生み出すことができます。
@@ -83,7 +82,6 @@
     <i class="large material-icons my_top2_icon">favorite</i>
     <div class="row">
     <div class="col s12">
-      <%=image_tag "top2.png", class:"responsive-img"%>
       <div class="card-panel teal left-align">
         <span class="white-text">気になる演奏者を見つけたら、気軽にいいねしてみましょう。</br>
         お相手からお返しのいいねがあれば、マッチング成立です。
@@ -96,7 +94,6 @@
     <i class="large material-icons my_top3_icon">message</i>
     <div class="row">
     <div class="col s12">
-      <%=image_tag "top3.png", class:"responsive-img"%>
       <div class="card-panel teal left-align">
         <span class="white-text">マッチングが成立した後は、メッセージを交換できます。</br>
         セッションの計画を立てたり、情報交換をしてみましょう。
