@@ -84,10 +84,6 @@ jobs:
           name: deploy
           command: |
             ecs-cli compose --file docker-compose.production.yml service up --create-log-groups --target-group-arn arn:aws:elasticloadbalancing:ap-northeast-1:486463126616:targetgroup/match-app-http/b03ecb88e969f07b --container-name puma-server --container-port 3000
-      - run:
-          name: migration
-          command: |
-            aws ecs run-task --cluster sample-ecs-cluster --task-definition rails-migration
 
 workflows:
   version: 2
