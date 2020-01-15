@@ -71,8 +71,7 @@ jobs:
       - run:
           name: install and setup ecs-cli
           command: |
-            sudo apt-get install -y curl 
-            sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-darwin-amd64-latest
+            sudo curl -o /usr/local/bin/ecs-cli sudo curl -o /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
             sudo chmod +x /usr/local/bin/ecs-cli
             ecs-cli configure --cluster match-app-ecs-cluster --default-launch-type FARGATE --config-name match-app --region ap-northeast-1
             ecs-cli configure profile --access-key AWS_ACCESS_KEY_ID --secret-key AWS_SECRET_ACCESS_KEY --profile-name match-app-profile
