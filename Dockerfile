@@ -19,11 +19,10 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install nodejs -y --no-install-recommends
 RUN apt-get install vim -y --no-install-recommends
 RUN apt-get install libsox-fmt-all sox -y --no-install-recommends
-RUN apt-get install cron -y --no-install-recommends
 
 ADD . $APP_ROOT
 
 RUN if ["${RAILS_ENV}" = "production"]; then bundle exec rails assets precompile; else export RAILS_ENV=development; fi
 
 EXPOSE 3000
-CMD if ["${RAILS_ENV}" = "production"]; then unicorn -c config/unicorn.rb; else bundler && rails server -b 0.0.0.0; fi
+CMD bundler && rails server -b 0.0.0.0; fi

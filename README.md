@@ -42,8 +42,8 @@ Terraform、CircleCI
 ## 構成図
 <a href="https://gyazo.com/f1300906f3c21b86d1c6387543037d3c"><img src="https://i.gyazo.com/f1300906f3c21b86d1c6387543037d3c.png" alt="Image from Gyazo" width="600"/></a>
 </br>
-- なお、12/31より費用削減のため、ElastiCacheを使わず、Dockerコンテナ内でRedisを立ち上げています。
-
+- 12/31より費用削減のため、ElastiCacheを使わず、Dockerコンテナ内でRedisを立ち上げています。
+- 2020/1/16より、費用削減のため、nginx、redisを停止。ALBとpumaのみの運用としました。また、同じく経費削減のため、ECSの起動タイプをEC2からFargateへ変更。
 ## その他
 - テストデータは定期的にリセットしております。
 

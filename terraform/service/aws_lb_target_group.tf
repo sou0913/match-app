@@ -1,12 +1,13 @@
 resource "aws_lb_target_group" "http" {
-  name = "sample-http"
-  port = 80
+  name = "match-app-http"
+  port = 3000 
   protocol = "HTTP"
+  target_type = "ip"
   vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
 
   health_check {
     interval = 30
-    path = "/healthcheck.html"
+    path = "/healthcheck"
     port = "traffic-port"
     protocol = "HTTP"
     timeout = 10

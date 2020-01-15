@@ -17,14 +17,14 @@ class UsersController < ApplicationController
 
   def type
     current_user.update(typeparams)
-    Redis.current.sadd("role-#{current_user.role}", current_user.id)
     redirect_to root_path
   end
 
   def index
+    users = User.all
+    non_relation_users = return_others(current_user) 
     @q = User.ransack(params[:q])
-    ary = return_others(current_user)
-    @partners = User.includes(:relations).where(id: ary).page(params[:page]).per(10)
+    @partners = Kaminari.paginate_array(non_relation_users).page(params[:page]).per(10)
   end
 
   def show
@@ -49,35 +49,32 @@ class UsersController < ApplicationController
   end
 
   def favor
-    ary = Redis.current.sdiff("f-#{current_user.id}", "b-#{current_user.id}")
-    partners = ary.map { |id| User.find(id) }
-    @favor = Kaminari.paginate_array(partners).page(params[:page]).per(10)
+    favor_users = current_user.favor_users
+    @favor = favor_users.page(params[:page]).per(10)
   end
 
   def be_favored
-    ary = Redis.current.sdiff("b-#{current_user.id}", "f-#{current_user.id}")
-    partners = ary.map { |id| User.find(id) }
-    @favored = Kaminari.paginate_array(partners).page(params[:page]).per(10)
+    favored_users = current_user.favored_users
+    @favored = favored_users.page(params[:page]).per(10)
   end
 
   def match
-    ary = Redis.current.sinter("f-#{current_user.id}", "b-#{current_user.id}")
-    partners = ary.map { |id| User.find(id) }
-    @match = Kaminari.paginate_array(partners).page(params[:page]).per(10)
+    matchers = current_user.favor_users & current_user.favored_users
+    @match = Kaminari.paginate_array(matchers).page(params[:page]).per(10)
   end
 
   private
 
   def relation_type(user, partner)
-    favor = Redis.current.sismember("f-#{user.id}", partner.id)
-    be_favored = Redis.current.sismember("b-#{user.id}", partner.id)
+    favor_users = current_user.favor_users
+    favored_users = current_user.favored_users
     if user.id == partner.id
       'self'
-    elsif favor && be_favored
+    elsif favor_users.include?(partner) && favored_users.include?(partner)
       'message'
-    elsif !favor && be_favored
+    elsif favored_users.include?(partner)
       'reply'
-    elsif favor && !be_favored
+    elsif favor_users.include?(partner) 
       'done'
     else
       'favorite'
@@ -100,15 +97,21 @@ class UsersController < ApplicationController
 
   def return_others(user)
     ary = if user.role.zero?
-            Redis.current.sdiff('role-1', "f-#{user.id}", "b-#{user.id}")
+            users = User.where(role: 1)
+            favor_users = current_user.favor_users
+            favored_users = current_user.favored_users
+            users - favor_users - favored_users
           else
-            Redis.current.sdiff('role-0', "f-#{user.id}", "b-#{user.id}")
+            users = User.where(role: 0)
+            favor_users = current_user.favor_users
+            favored_users = current_user.favored_users
+            users - favor_users - favored_users
           end
   end
 
   # 今何人にいいねされているかカウント
   def set_badge
-    be_favored = Redis.current.sdiff("b-#{current_user.id}", "f-#{current_user.id}")
+    be_favored = current_user.favored_users - current_user.favor_users
     @badge = be_favored.length
   end
 end

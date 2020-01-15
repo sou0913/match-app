@@ -1,6 +1,6 @@
-resource "aws_security_group" "instance" {
-  name = "instance"
-  description = "instance sg"
+resource "aws_security_group" "fargate" {
+  name = "fargate"
+  description = "fargate sg"
   vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
 
   ingress {
@@ -29,7 +29,7 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_security_group" "alb" {
-  name = "sample-rails-alb"
+  name = "match-app-alb"
   description = "http and https"
   vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
 
@@ -71,20 +71,7 @@ resource "aws_security_group" "db" {
     protocol = "tcp"
 
     security_groups = [
-      aws_security_group.instance.id
-    ]
-  }
-}
-resource "aws_security_group" "redis" {
-  name = "sample-redis"
-  description = "REDIS"
-  vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
-  ingress {
-    from_port = 6379
-    to_port = 6379
-    protocol = "tcp"
-    security_groups = [
-      aws_security_group.instance.id
+      aws_security_group.fargate.id
     ]
   }
 }

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root 'users#index'
-
+  get "/healthcheck" => "alb#healthcheck"
   resources :users do
     resources :messages, only: %i[show create]
     namespace :api do

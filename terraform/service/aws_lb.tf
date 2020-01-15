@@ -1,5 +1,5 @@
 resource "aws_lb" "lb" {
-  name = "sample-lb"
+  name = "match-app-lb"
   internal = false
   load_balancer_type = "application"
 

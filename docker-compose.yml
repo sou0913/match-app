@@ -1,12 +1,11 @@
 version: '3'
 services:
-  unicorn-server:
+  puma-server:
     build: ./
     env_file: .docker-env
     ports:
       - 3000:3000
     volumes:
-      # - sockets_share:/app/sockets
       - ./:/app/
     tty: true
     stdin_open: true
@@ -20,19 +19,3 @@ services:
       - ./postgres/sh:/docker-entrypoint-initdb.d
       - ./postgres/data:/data
       - ./postgres/storage:/var/lib/postgresql/data
-  redis:
-    image: redis:latest
-    ports:
-      - 6379:6379
-    volumes:
-      - ./redis/data:/var/lib/redis
-    command: redis-server
-#   nginx-server:
-#     build: ./nginx
-#     ports:
-#       - 80:8080
-#     volumes:
-#       - sockets_share:/app/sockets
-
-# volumes:
-#   sockets_share:

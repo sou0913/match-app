@@ -6,7 +6,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :messages
-  has_many :relations
+  has_many :favor_relations, class_name: "Relation", foreign_key: :favor_user_id
+  has_many :favor_users, through: :favor_relations, source: :favored_user
+  has_many :favored_relations, class_name: "Relation", foreign_key: :favored_user_id
+  has_many :favored_users, through: :favored_relations, source: :favor_user
   mount_uploader :image, ImagesUploader
   mount_uploader :audio, AudioUploader
 
