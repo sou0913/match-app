@@ -6,3 +6,5 @@ class AlbController < ApplicationController
     render plain: 'ok'
   end
 
+end
+
