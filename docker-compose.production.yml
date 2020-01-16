@@ -1,6 +1,6 @@
 version: '3'
 services:
-  web:
+  puma-server:
     image: 486463126616.dkr.ecr.ap-northeast-1.amazonaws.com/match-app-image:puma-latest
     command: rails s -p 3000 -b '0.0.0.0' && rake db:migrate
     ports:
