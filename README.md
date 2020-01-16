@@ -1,4 +1,5 @@
 # Railsを用いたマッチングアプリの制作
+（注）現在環境移行中につきアプリ停止中。
 <a href="https://isshoni.link/">
   https://isshoni.link/
 </a>
