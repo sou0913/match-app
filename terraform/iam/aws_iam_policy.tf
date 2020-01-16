@@ -5,6 +5,13 @@ resource "aws_iam_policy" "deploy" {
   policy = file("aws_iam_policies/ecr_policy.json")
 }
 
+resource "aws_iam_policy" "task" {
+  name = "task"
+  path = "/"
+  description = "execute ecs task"
+  policy = file("aws_iam_policies/ecs_task_policy.json")
+}
+
 resource "aws_iam_policy" "s3" {
   name = "s3_policy"
   path = "/"
